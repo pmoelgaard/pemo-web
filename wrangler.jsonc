@@ -2,7 +2,7 @@
   "$schema": "https://unpkg.com/wrangler/config-schema.json",
   "name": "pemo-www",
   "account_id": "b4a9d6d55078009ff75dfac01f83fe80",
-  "compatibility_date": "2026-06-01",
+  "compatibility_date": "2026-07-13",
   "assets": {
     "directory": "./public",
     "html_handling": "auto-trailing-slash",
