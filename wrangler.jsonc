@@ -1,0 +1,19 @@
+{
+  "$schema": "https://unpkg.com/wrangler/config-schema.json",
+  "name": "pemo-www",
+  "account_id": "b4a9d6d55078009ff75dfac01f83fe80",
+  "compatibility_date": "2026-06-01",
+  "assets": {
+    "directory": "./public",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "single-page-application"
+  },
+  "workers_dev": true,
+  "routes": [
+    { "pattern": "pemo.me", "custom_domain": true },
+    { "pattern": "www.pemo.me", "custom_domain": true }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}
