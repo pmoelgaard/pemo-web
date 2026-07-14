@@ -5,7 +5,12 @@ Professional profile page for **Peter A. Moelgaard**, served at
 
 ## Stack
 
-- Single static page (`public/index.html`) — no build step, no dependencies.
+- Static pages — no build step, no dependencies.
+  - `public/index.html` — landing page: masonry gallery of projects, fed by
+    `public/assets/projects.json` (placeholder data for now; regenerate with
+    `python3 scripts/generate_projects.py`).
+  - `public/contact/index.html` — contact module, served at `/contact`
+    (redirects to `/contact/` via the Worker's `auto-trailing-slash` handling).
 - Hosted as the Cloudflare Worker **pemo-www** (static assets), with
   `pemo.me` and `www.pemo.me` attached as custom domains. Cloudflare issues
   and auto-renews the TLS certificate.
@@ -26,9 +31,13 @@ npx wrangler deploy
 ## Local preview
 
 ```sh
-python3 -m http.server 8000 --directory public
-# open http://localhost:8000
+npx wrangler dev --port 8642
+# open http://localhost:8642
 ```
+
+Runs the real Workers assets pipeline locally (trailing-slash handling, SPA
+fallback), so routes behave exactly as in production. Also wired up as the
+`pemo-www` launch configuration in `.claude/launch.json`.
 
 ## History
 

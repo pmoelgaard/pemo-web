@@ -1,0 +1,1504 @@
+[
+  {
+    "id": "proj-069",
+    "name": "Umbra Hub",
+    "sector": "Fintech",
+    "role": "Board Member",
+    "year": 2026,
+    "summary": "Bootstrapped a distributed compliance startup to profitability across Southeast Asia.",
+    "tags": [
+      "Go",
+      "Edge"
+    ],
+    "palette": 1,
+    "aspect": "4/3"
+  },
+  {
+    "id": "proj-028",
+    "name": "Willow Port",
+    "sector": "AI & ML",
+    "role": "Advisor",
+    "year": 2025,
+    "summary": "Re-platformed a legacy compliance stack into a multi-tenant cloud-native service for APAC.",
+    "tags": [
+      "IoT",
+      "Rust",
+      "Workers",
+      "Terraform"
+    ],
+    "palette": 4,
+    "aspect": "16/9"
+  },
+  {
+    "id": "proj-049",
+    "name": "Forge Line",
+    "sector": "Telecom",
+    "role": "CEO",
+    "year": 2025,
+    "summary": "Bootstrapped a composable settlement startup to profitability across Southeast Asia.",
+    "tags": [
+      "Python",
+      "GraphQL"
+    ],
+    "palette": 4,
+    "aspect": "4/3"
+  },
+  {
+    "id": "proj-052",
+    "name": "Juniper Flow",
+    "sector": "E-commerce",
+    "role": "Investor",
+    "year": 2025,
+    "summary": "Launched a real-time billing venture and grew it to 1B+ events per day in the EU.",
+    "tags": [
+      "Swift",
+      "Terraform",
+      "React",
+      "gRPC"
+    ],
+    "palette": 3,
+    "aspect": "4/5"
+  },
+  {
+    "id": "proj-007",
+    "name": "Orbit Base",
+    "sector": "Media",
+    "role": "Founder",
+    "year": 2024,
+    "summary": "Scaled a multi-tenant booking product from prototype to 2M+ users.",
+    "tags": [
+      "Kubernetes",
+      "Postgres",
+      "Rust"
+    ],
+    "palette": 2,
+    "aspect": "5/4"
+  },
+  {
+    "id": "proj-010",
+    "name": "Granite Core",
+    "sector": "Media",
+    "role": "Advisor",
+    "year": 2024,
+    "summary": "Architected privacy-first payments infrastructure powering 12 markets.",
+    "tags": [
+      "Kafka",
+      "Terraform"
+    ],
+    "palette": 5,
+    "aspect": "3/4"
+  },
+  {
+    "id": "proj-048",
+    "name": "Grove Link",
+    "sector": "Education",
+    "role": "Investor",
+    "year": 2024,
+    "summary": "Bootstrapped a multi-tenant identity startup to profitability across North America.",
+    "tags": [
+      "Redis",
+      "Workers",
+      "Kubernetes",
+      "Kafka"
+    ],
+    "palette": 4,
+    "aspect": "1/1"
+  },
+  {
+    "id": "proj-053",
+    "name": "Tundra Grid",
+    "sector": "Fintech",
+    "role": "Board Member",
+    "year": 2024,
+    "summary": "Architected serverless search infrastructure powering 12 markets.",
+    "tags": [
+      "Swift",
+      "gRPC",
+      "Edge",
+      "Go"
+    ],
+    "palette": 3,
+    "aspect": "4/3"
+  },
+  {
+    "id": "proj-061",
+    "name": "Anchor Point",
+    "sector": "Education",
+    "role": "Board Member",
+    "year": 2024,
+    "summary": "Built a serverless settlement platform serving 1B+ events per day across APAC.",
+    "tags": [
+      "Kubernetes",
+      "Kafka"
+    ],
+    "palette": 5,
+    "aspect": "5/4"
+  },
+  {
+    "id": "proj-070",
+    "name": "Fjord Stack",
+    "sector": "E-commerce",
+    "role": "CEO",
+    "year": 2024,
+    "summary": "Architected serverless compliance infrastructure powering 12 markets.",
+    "tags": [
+      "Kafka",
+      "Go"
+    ],
+    "palette": 1,
+    "aspect": "3/4"
+  },
+  {
+    "id": "proj-086",
+    "name": "Zenith Core",
+    "sector": "GovTech",
+    "role": "CEO",
+    "year": 2024,
+    "summary": "Advised on a distributed content-delivery rollout reaching 500k daily transactions.",
+    "tags": [
+      "Kotlin",
+      "TypeScript",
+      "gRPC"
+    ],
+    "palette": 2,
+    "aspect": "3/2"
+  },
+  {
+    "id": "proj-012",
+    "name": "Ledger Core",
+    "sector": "Logistics",
+    "role": "Founder",
+    "year": 2023,
+    "summary": "Re-platformed a legacy marketplace stack into a serverless cloud-native service for APAC.",
+    "tags": [
+      "WebRTC",
+      "Cloudflare",
+      "Kotlin",
+      "Kubernetes"
+    ],
+    "palette": 2,
+    "aspect": "16/9"
+  },
+  {
+    "id": "proj-015",
+    "name": "Anchor Labs",
+    "sector": "Travel",
+    "role": "Investor",
+    "year": 2023,
+    "summary": "Advised on a edge-deployed risk-scoring rollout reaching 6 national operators.",
+    "tags": [
+      "Python",
+      "TypeScript",
+      "GraphQL",
+      "Kotlin"
+    ],
+    "palette": 5,
+    "aspect": "3/2"
+  },
+  {
+    "id": "proj-017",
+    "name": "Xenon Mesh",
+    "sector": "GovTech",
+    "role": "Chief Architect",
+    "year": 2023,
+    "summary": "Bootstrapped a multi-tenant compliance startup to profitability across the EU.",
+    "tags": [
+      "Cloudflare",
+      "Rust"
+    ],
+    "palette": 3,
+    "aspect": "1/1"
+  },
+  {
+    "id": "proj-026",
+    "name": "Helix Point",
+    "sector": "Education",
+    "role": "CTO",
+    "year": 2023,
+    "summary": "Built a real-time supply-chain platform serving 12 markets across Southeast Asia.",
+    "tags": [
+      "Go",
+      "Swift"
+    ],
+    "palette": 5,
+    "aspect": "4/3"
+  },
+  {
+    "id": "proj-033",
+    "name": "Jade Route",
+    "sector": "AI & ML",
+    "role": "Advisor",
+    "year": 2023,
+    "summary": "Bootstrapped a data-intensive settlement startup to profitability across Southeast Asia.",
+    "tags": [
+      "gRPC",
+      "Postgres"
+    ],
+    "palette": 2,
+    "aspect": "3/2"
+  },
+  {
+    "id": "proj-093",
+    "name": "Drift Route",
+    "sector": "AI & ML",
+    "role": "Product Lead",
+    "year": 2023,
+    "summary": "Built a data-intensive onboarding platform serving 500k daily transactions across North America.",
+    "tags": [
+      "gRPC",
+      "GraphQL",
+      "Kafka",
+      "Go"
+    ],
+    "palette": 2,
+    "aspect": "4/3"
+  },
+  {
+    "id": "proj-019",
+    "name": "Solstice Labs",
+    "sector": "Energy",
+    "role": "Advisor",
+    "year": 2022,
+    "summary": "Re-platformed a legacy risk-scoring stack into a mobile-first cloud-native service for the EU.",
+    "tags": [
+      "Kafka",
+      "Kotlin"
+    ],
+    "palette": 3,
+    "aspect": "3/2"
+  },
+  {
+    "id": "proj-030",
+    "name": "Dune Trade",
+    "sector": "Real Estate",
+    "role": "CEO",
+    "year": 2022,
+    "summary": "Launched a serverless settlement venture and grew it to 6 national operators in emerging markets.",
+    "tags": [
+      "React",
+      "Postgres",
+      "TypeScript"
+    ],
+    "palette": 2,
+    "aspect": "16/9"
+  },
+  {
+    "id": "proj-062",
+    "name": "Grove Flow",
+    "sector": "Energy",
+    "role": "Founder",
+    "year": 2022,
+    "summary": "Scaled a data-intensive marketplace product from prototype to 2M+ users.",
+    "tags": [
+      "Terraform",
+      "Go",
+      "TypeScript",
+      "GraphQL"
+    ],
+    "palette": 2,
+    "aspect": "3/2"
+  },
+  {
+    "id": "proj-072",
+    "name": "Relay Line",
+    "sector": "Media",
+    "role": "Product Lead",
+    "year": 2022,
+    "summary": "Led the design of a composable analytics system, later acquired by a the EU group.",
+    "tags": [
+      "Rust",
+      "Redis",
+      "Kotlin",
+      "Postgres"
+    ],
+    "palette": 4,
+    "aspect": "4/3"
+  },
+  {
+    "id": "proj-073",
+    "name": "Zephyr Signal",
+    "sector": "GovTech",
+    "role": "Lead Engineer",
+    "year": 2022,
+    "summary": "Launched a edge-deployed payments venture and grew it to 2M+ users in the EU.",
+    "tags": [
+      "Rust",
+      "Swift",
+      "Redis",
+      "TypeScript"
+    ],
+    "palette": 0,
+    "aspect": "4/5"
+  },
+  {
+    "id": "proj-075",
+    "name": "Vertex Pay",
+    "sector": "Media",
+    "role": "Investor",
+    "year": 2022,
+    "summary": "Architected multi-tenant risk-scoring infrastructure powering 12 markets.",
+    "tags": [
+      "WebRTC",
+      "Rust",
+      "React"
+    ],
+    "palette": 3,
+    "aspect": "4/5"
+  },
+  {
+    "id": "proj-095",
+    "name": "Vector Mesh",
+    "sector": "Fintech",
+    "role": "Board Member",
+    "year": 2022,
+    "summary": "Led the design of a data-intensive content-delivery system, later acquired by a North America group.",
+    "tags": [
+      "Python",
+      "Kubernetes",
+      "React"
+    ],
+    "palette": 3,
+    "aspect": "1/1"
+  },
+  {
+    "id": "proj-009",
+    "name": "Tundra Link",
+    "sector": "Fintech",
+    "role": "Investor",
+    "year": 2021,
+    "summary": "Architected API-first messaging infrastructure powering 500k daily transactions.",
+    "tags": [
+      "Kubernetes",
+      "Redis"
+    ],
+    "palette": 2,
+    "aspect": "4/5"
+  },
+  {
+    "id": "proj-029",
+    "name": "Cobalt Link",
+    "sector": "Energy",
+    "role": "Co-Founder",
+    "year": 2021,
+    "summary": "Led the design of a mobile-first onboarding system, later acquired by a emerging markets group.",
+    "tags": [
+      "Terraform",
+      "Redis",
+      "Go"
+    ],
+    "palette": 3,
+    "aspect": "1/1"
+  },
+  {
+    "id": "proj-042",
+    "name": "Cascade Pay",
+    "sector": "Telecom",
+    "role": "CTO",
+    "year": 2021,
+    "summary": "Architected multi-tenant marketplace infrastructure powering 150 hospitals.",
+    "tags": [
+      "Go",
+      "TypeScript",
+      "Workers"
+    ],
+    "palette": 1,
+    "aspect": "5/4"
+  },
+  {
+    "id": "proj-045",
+    "name": "Flint Grid",
+    "sector": "Travel",
+    "role": "Investor",
+    "year": 2021,
+    "summary": "Launched a serverless identity venture and grew it to 40 enterprise clients in the EU.",
+    "tags": [
+      "Python",
+      "Edge",
+      "WebRTC"
+    ],
+    "palette": 5,
+    "aspect": "5/4"
+  },
+  {
+    "id": "proj-066",
+    "name": "Vertex Vault",
+    "sector": "E-commerce",
+    "role": "Founder",
+    "year": 2021,
+    "summary": "Bootstrapped a composable billing startup to profitability across the Nordics.",
+    "tags": [
+      "GraphQL",
+      "Swift"
+    ],
+    "palette": 0,
+    "aspect": "4/3"
+  },
+  {
+    "id": "proj-068",
+    "name": "Elm Port",
+    "sector": "AI & ML",
+    "role": "Board Member",
+    "year": 2021,
+    "summary": "Architected edge-deployed risk-scoring infrastructure powering 12 markets.",
+    "tags": [
+      "Terraform",
+      "Workers",
+      "gRPC",
+      "Kafka"
+    ],
+    "palette": 1,
+    "aspect": "4/3"
+  },
+  {
+    "id": "proj-076",
+    "name": "Iris Works",
+    "sector": "AI & ML",
+    "role": "Co-Founder",
+    "year": 2021,
+    "summary": "Advised on a high-throughput settlement rollout reaching 500k daily transactions.",
+    "tags": [
+      "Rust",
+      "Terraform",
+      "Go"
+    ],
+    "palette": 4,
+    "aspect": "4/3"
+  },
+  {
+    "id": "proj-080",
+    "name": "Zephyr Logic",
+    "sector": "GovTech",
+    "role": "Lead Engineer",
+    "year": 2021,
+    "summary": "Led the design of a high-throughput payments system, later acquired by a APAC group.",
+    "tags": [
+      "React",
+      "Python",
+      "Terraform"
+    ],
+    "palette": 2,
+    "aspect": "3/2"
+  },
+  {
+    "id": "proj-088",
+    "name": "Cascade Grid",
+    "sector": "Healthtech",
+    "role": "CTO",
+    "year": 2021,
+    "summary": "Scaled a privacy-first marketplace product from prototype to 40 enterprise clients.",
+    "tags": [
+      "Go",
+      "TypeScript",
+      "Python",
+      "Swift"
+    ],
+    "palette": 3,
+    "aspect": "5/4"
+  },
+  {
+    "id": "proj-004",
+    "name": "Quarry Base",
+    "sector": "Logistics",
+    "role": "Co-Founder",
+    "year": 2020,
+    "summary": "Built a data-intensive billing platform serving 500k daily transactions across Europe.",
+    "tags": [
+      "LLMs",
+      "Go"
+    ],
+    "palette": 2,
+    "aspect": "4/5"
+  },
+  {
+    "id": "proj-005",
+    "name": "Umbra Core",
+    "sector": "Logistics",
+    "role": "Founder",
+    "year": 2020,
+    "summary": "Advised on a privacy-first recommendation rollout reaching 150 hospitals.",
+    "tags": [
+      "WebRTC",
+      "Kafka"
+    ],
+    "palette": 0,
+    "aspect": "4/3"
+  },
+  {
+    "id": "proj-016",
+    "name": "Helix Chain",
+    "sector": "E-commerce",
+    "role": "Founder",
+    "year": 2020,
+    "summary": "Led the design of a privacy-first billing system, later acquired by a APAC group.",
+    "tags": [
+      "Postgres",
+      "Swift"
+    ],
+    "palette": 4,
+    "aspect": "5/4"
+  },
+  {
+    "id": "proj-044",
+    "name": "Zephyr Works",
+    "sector": "Fintech",
+    "role": "Co-Founder",
+    "year": 2020,
+    "summary": "Re-platformed a legacy onboarding stack into a composable cloud-native service for the Middle East.",
+    "tags": [
+      "Edge",
+      "IoT"
+    ],
+    "palette": 0,
+    "aspect": "5/4"
+  },
+  {
+    "id": "proj-055",
+    "name": "Harbor Logic",
+    "sector": "Media",
+    "role": "Investor",
+    "year": 2020,
+    "summary": "Re-platformed a legacy analytics stack into a data-intensive cloud-native service for emerging markets.",
+    "tags": [
+      "Workers",
+      "TypeScript",
+      "Postgres",
+      "GraphQL"
+    ],
+    "palette": 1,
+    "aspect": "3/2"
+  },
+  {
+    "id": "proj-074",
+    "name": "Summit Link",
+    "sector": "GovTech",
+    "role": "CEO",
+    "year": 2020,
+    "summary": "Led the design of a high-throughput recommendation system, later acquired by a North America group.",
+    "tags": [
+      "GraphQL",
+      "Redis",
+      "Kotlin",
+      "WebRTC"
+    ],
+    "palette": 0,
+    "aspect": "5/4"
+  },
+  {
+    "id": "proj-008",
+    "name": "Umbra Pay",
+    "sector": "E-commerce",
+    "role": "Lead Engineer",
+    "year": 2019,
+    "summary": "Re-platformed a legacy booking stack into a serverless cloud-native service for Europe.",
+    "tags": [
+      "Python",
+      "React"
+    ],
+    "palette": 3,
+    "aspect": "5/4"
+  },
+  {
+    "id": "proj-022",
+    "name": "Elm Vault",
+    "sector": "Media",
+    "role": "Advisor",
+    "year": 2019,
+    "summary": "Built a serverless search platform serving 6 national operators across Southeast Asia.",
+    "tags": [
+      "WebRTC",
+      "LLMs",
+      "Edge"
+    ],
+    "palette": 4,
+    "aspect": "1/1"
+  },
+  {
+    "id": "proj-024",
+    "name": "Harbor Hub",
+    "sector": "E-commerce",
+    "role": "Founder",
+    "year": 2019,
+    "summary": "Built a distributed content-delivery platform serving 40 enterprise clients across the EU.",
+    "tags": [
+      "gRPC",
+      "React",
+      "Kubernetes"
+    ],
+    "palette": 3,
+    "aspect": "4/5"
+  },
+  {
+    "id": "proj-027",
+    "name": "Pulse Logic",
+    "sector": "Education",
+    "role": "CEO",
+    "year": 2019,
+    "summary": "Architected edge-deployed recommendation infrastructure powering 300+ retail locations.",
+    "tags": [
+      "Rust",
+      "Python",
+      "GraphQL",
+      "IoT"
+    ],
+    "palette": 4,
+    "aspect": "4/3"
+  },
+  {
+    "id": "proj-034",
+    "name": "Ridge Route",
+    "sector": "Media",
+    "role": "Investor",
+    "year": 2019,
+    "summary": "Bootstrapped a mobile-first telemetry startup to profitability across North America.",
+    "tags": [
+      "GraphQL",
+      "Kafka",
+      "Postgres"
+    ],
+    "palette": 0,
+    "aspect": "3/2"
+  },
+  {
+    "id": "proj-050",
+    "name": "Nord Metrics",
+    "sector": "Telecom",
+    "role": "CTO",
+    "year": 2019,
+    "summary": "Led the design of a privacy-first marketplace system, later acquired by a the Nordics group.",
+    "tags": [
+      "GraphQL",
+      "Kotlin",
+      "Kafka"
+    ],
+    "palette": 3,
+    "aspect": "5/4"
+  },
+  {
+    "id": "proj-059",
+    "name": "Basalt Grid",
+    "sector": "Telecom",
+    "role": "Lead Engineer",
+    "year": 2019,
+    "summary": "Led the design of a edge-deployed telemetry system, later acquired by a the Middle East group.",
+    "tags": [
+      "Kafka",
+      "Redis",
+      "GraphQL",
+      "Kubernetes"
+    ],
+    "palette": 3,
+    "aspect": "5/4"
+  },
+  {
+    "id": "proj-077",
+    "name": "Helix Flow",
+    "sector": "Telecom",
+    "role": "Lead Engineer",
+    "year": 2019,
+    "summary": "Advised on a data-intensive marketplace rollout reaching 80k merchants.",
+    "tags": [
+      "Workers",
+      "GraphQL",
+      "Edge",
+      "Terraform"
+    ],
+    "palette": 0,
+    "aspect": "3/4"
+  },
+  {
+    "id": "proj-079",
+    "name": "Dune Metrics",
+    "sector": "Logistics",
+    "role": "Advisor",
+    "year": 2019,
+    "summary": "Built a serverless recommendation platform serving 2M+ users across Europe.",
+    "tags": [
+      "Terraform",
+      "Cloudflare",
+      "Python"
+    ],
+    "palette": 1,
+    "aspect": "3/4"
+  },
+  {
+    "id": "proj-089",
+    "name": "Zephyr Flow",
+    "sector": "Energy",
+    "role": "Co-Founder",
+    "year": 2019,
+    "summary": "Bootstrapped a data-intensive onboarding startup to profitability across Europe.",
+    "tags": [
+      "Redis",
+      "GraphQL",
+      "Kafka"
+    ],
+    "palette": 4,
+    "aspect": "4/3"
+  },
+  {
+    "id": "proj-091",
+    "name": "Solstice Desk",
+    "sector": "Travel",
+    "role": "CTO",
+    "year": 2019,
+    "summary": "Built a edge-deployed compliance platform serving 300+ retail locations across the EU.",
+    "tags": [
+      "Redis",
+      "Rust"
+    ],
+    "palette": 2,
+    "aspect": "3/2"
+  },
+  {
+    "id": "proj-094",
+    "name": "Fjord Base",
+    "sector": "Education",
+    "role": "Co-Founder",
+    "year": 2019,
+    "summary": "Scaled a event-driven billing product from prototype to 80k merchants.",
+    "tags": [
+      "LLMs",
+      "gRPC",
+      "React"
+    ],
+    "palette": 1,
+    "aspect": "3/2"
+  },
+  {
+    "id": "proj-003",
+    "name": "Delta Core",
+    "sector": "Media",
+    "role": "Advisor",
+    "year": 2018,
+    "summary": "Launched a high-throughput telemetry venture and grew it to 500k daily transactions in APAC.",
+    "tags": [
+      "Redis",
+      "LLMs"
+    ],
+    "palette": 5,
+    "aspect": "4/5"
+  },
+  {
+    "id": "proj-078",
+    "name": "Relay Flow",
+    "sector": "Media",
+    "role": "Product Lead",
+    "year": 2018,
+    "summary": "Scaled a data-intensive settlement product from prototype to 12 markets.",
+    "tags": [
+      "Rust",
+      "Kafka",
+      "Postgres"
+    ],
+    "palette": 3,
+    "aspect": "5/4"
+  },
+  {
+    "id": "proj-023",
+    "name": "Relay Works",
+    "sector": "Media",
+    "role": "Lead Engineer",
+    "year": 2017,
+    "summary": "Launched a multi-tenant settlement venture and grew it to 2M+ users in emerging markets.",
+    "tags": [
+      "Python",
+      "Redis",
+      "Go",
+      "Cloudflare"
+    ],
+    "palette": 3,
+    "aspect": "3/4"
+  },
+  {
+    "id": "proj-046",
+    "name": "Delta Chain",
+    "sector": "Media",
+    "role": "Co-Founder",
+    "year": 2017,
+    "summary": "Led the design of a edge-deployed telemetry system, later acquired by a North America group.",
+    "tags": [
+      "React",
+      "WebRTC"
+    ],
+    "palette": 5,
+    "aspect": "16/9"
+  },
+  {
+    "id": "proj-051",
+    "name": "Krait Logic",
+    "sector": "GovTech",
+    "role": "Chief Architect",
+    "year": 2017,
+    "summary": "Bootstrapped a privacy-first risk-scoring startup to profitability across Europe.",
+    "tags": [
+      "Kotlin",
+      "Go",
+      "TypeScript",
+      "Kafka"
+    ],
+    "palette": 3,
+    "aspect": "4/5"
+  },
+  {
+    "id": "proj-060",
+    "name": "Fjord Vault",
+    "sector": "Real Estate",
+    "role": "Advisor",
+    "year": 2017,
+    "summary": "Architected multi-tenant telemetry infrastructure powering 25M API calls per day.",
+    "tags": [
+      "gRPC",
+      "Kafka"
+    ],
+    "palette": 0,
+    "aspect": "3/4"
+  },
+  {
+    "id": "proj-041",
+    "name": "Delta Grid",
+    "sector": "Real Estate",
+    "role": "Advisor",
+    "year": 2016,
+    "summary": "Bootstrapped a API-first identity startup to profitability across the Middle East.",
+    "tags": [
+      "Redis",
+      "TypeScript",
+      "Postgres",
+      "Kafka"
+    ],
+    "palette": 5,
+    "aspect": "3/4"
+  },
+  {
+    "id": "proj-063",
+    "name": "Inlet Cloud",
+    "sector": "E-commerce",
+    "role": "Advisor",
+    "year": 2016,
+    "summary": "Architected high-throughput telemetry infrastructure powering 150 hospitals.",
+    "tags": [
+      "GraphQL",
+      "React",
+      "Rust"
+    ],
+    "palette": 3,
+    "aspect": "4/3"
+  },
+  {
+    "id": "proj-082",
+    "name": "Nord Bridge",
+    "sector": "AI & ML",
+    "role": "Advisor",
+    "year": 2016,
+    "summary": "Architected mobile-first marketplace infrastructure powering 300+ retail locations.",
+    "tags": [
+      "Edge",
+      "Swift",
+      "Kotlin",
+      "GraphQL"
+    ],
+    "palette": 0,
+    "aspect": "1/1"
+  },
+  {
+    "id": "proj-084",
+    "name": "Vector Chain",
+    "sector": "AI & ML",
+    "role": "Lead Engineer",
+    "year": 2016,
+    "summary": "Scaled a multi-tenant supply-chain product from prototype to 150 hospitals.",
+    "tags": [
+      "Workers",
+      "WebRTC",
+      "Cloudflare",
+      "Redis"
+    ],
+    "palette": 0,
+    "aspect": "5/4"
+  },
+  {
+    "id": "proj-100",
+    "name": "Zephyr Desk",
+    "sector": "Media",
+    "role": "Founder",
+    "year": 2016,
+    "summary": "Scaled a multi-tenant analytics product from prototype to 12 markets.",
+    "tags": [
+      "Workers",
+      "gRPC",
+      "Kotlin"
+    ],
+    "palette": 2,
+    "aspect": "1/1"
+  },
+  {
+    "id": "proj-001",
+    "name": "Onyx Chain",
+    "sector": "GovTech",
+    "role": "CEO",
+    "year": 2015,
+    "summary": "Architected serverless identity infrastructure powering 25M API calls per day.",
+    "tags": [
+      "Kotlin",
+      "React",
+      "Kafka",
+      "Kubernetes"
+    ],
+    "palette": 5,
+    "aspect": "3/2"
+  },
+  {
+    "id": "proj-011",
+    "name": "Delta Labs",
+    "sector": "Education",
+    "role": "Advisor",
+    "year": 2015,
+    "summary": "Advised on a real-time marketplace rollout reaching 1B+ events per day.",
+    "tags": [
+      "Rust",
+      "WebRTC"
+    ],
+    "palette": 2,
+    "aspect": "3/2"
+  },
+  {
+    "id": "proj-058",
+    "name": "Jade Labs",
+    "sector": "Telecom",
+    "role": "Advisor",
+    "year": 2015,
+    "summary": "Architected edge-deployed booking infrastructure powering 12 markets.",
+    "tags": [
+      "Kafka",
+      "Cloudflare",
+      "Redis"
+    ],
+    "palette": 2,
+    "aspect": "3/2"
+  },
+  {
+    "id": "proj-065",
+    "name": "Forge Base",
+    "sector": "Telecom",
+    "role": "Chief Architect",
+    "year": 2015,
+    "summary": "Launched a serverless search venture and grew it to 300+ retail locations in the Nordics.",
+    "tags": [
+      "Cloudflare",
+      "LLMs",
+      "React"
+    ],
+    "palette": 4,
+    "aspect": "1/1"
+  },
+  {
+    "id": "proj-083",
+    "name": "Pulse Hub",
+    "sector": "E-commerce",
+    "role": "Advisor",
+    "year": 2015,
+    "summary": "Built a real-time compliance platform serving 1B+ events per day across APAC.",
+    "tags": [
+      "React",
+      "Rust",
+      "Cloudflare"
+    ],
+    "palette": 3,
+    "aspect": "3/2"
+  },
+  {
+    "id": "proj-006",
+    "name": "Drift Port",
+    "sector": "Travel",
+    "role": "Lead Engineer",
+    "year": 2014,
+    "summary": "Scaled a data-intensive recommendation product from prototype to 40 enterprise clients.",
+    "tags": [
+      "Cloudflare",
+      "Rust",
+      "TypeScript",
+      "Go"
+    ],
+    "palette": 4,
+    "aspect": "4/3"
+  },
+  {
+    "id": "proj-025",
+    "name": "Flint Route",
+    "sector": "Energy",
+    "role": "Founder",
+    "year": 2014,
+    "summary": "Re-platformed a legacy content-delivery stack into a API-first cloud-native service for the Nordics.",
+    "tags": [
+      "LLMs",
+      "Workers",
+      "Terraform",
+      "Postgres"
+    ],
+    "palette": 5,
+    "aspect": "4/3"
+  },
+  {
+    "id": "proj-057",
+    "name": "Vertex Metrics",
+    "sector": "Education",
+    "role": "CTO",
+    "year": 2014,
+    "summary": "Re-platformed a legacy supply-chain stack into a high-throughput cloud-native service for emerging markets.",
+    "tags": [
+      "Python",
+      "TypeScript"
+    ],
+    "palette": 4,
+    "aspect": "5/4"
+  },
+  {
+    "id": "proj-087",
+    "name": "Atlas Flow",
+    "sector": "Travel",
+    "role": "Product Lead",
+    "year": 2014,
+    "summary": "Advised on a high-throughput analytics rollout reaching 150 hospitals.",
+    "tags": [
+      "Terraform",
+      "IoT"
+    ],
+    "palette": 5,
+    "aspect": "5/4"
+  },
+  {
+    "id": "proj-090",
+    "name": "Basalt Mesh",
+    "sector": "Fintech",
+    "role": "Board Member",
+    "year": 2014,
+    "summary": "Led the design of a API-first risk-scoring system, later acquired by a Southeast Asia group.",
+    "tags": [
+      "TypeScript",
+      "IoT",
+      "Kotlin"
+    ],
+    "palette": 3,
+    "aspect": "16/9"
+  },
+  {
+    "id": "proj-002",
+    "name": "Iris Trade",
+    "sector": "Media",
+    "role": "Co-Founder",
+    "year": 2013,
+    "summary": "Launched a multi-tenant booking venture and grew it to 1B+ events per day in the EU.",
+    "tags": [
+      "Redis",
+      "Edge"
+    ],
+    "palette": 0,
+    "aspect": "4/3"
+  },
+  {
+    "id": "proj-037",
+    "name": "Solstice Stack",
+    "sector": "Education",
+    "role": "Advisor",
+    "year": 2013,
+    "summary": "Scaled a data-intensive settlement product from prototype to 500k daily transactions.",
+    "tags": [
+      "Swift",
+      "Redis",
+      "React"
+    ],
+    "palette": 1,
+    "aspect": "4/3"
+  },
+  {
+    "id": "proj-043",
+    "name": "Juniper Link",
+    "sector": "Real Estate",
+    "role": "Lead Engineer",
+    "year": 2013,
+    "summary": "Launched a edge-deployed marketplace venture and grew it to 6 national operators in the Middle East.",
+    "tags": [
+      "Kotlin",
+      "LLMs",
+      "Swift"
+    ],
+    "palette": 3,
+    "aspect": "4/3"
+  },
+  {
+    "id": "proj-081",
+    "name": "Orbit Grid",
+    "sector": "Telecom",
+    "role": "Co-Founder",
+    "year": 2013,
+    "summary": "Led the design of a real-time booking system, later acquired by a Southeast Asia group.",
+    "tags": [
+      "Redis",
+      "WebRTC",
+      "Swift"
+    ],
+    "palette": 4,
+    "aspect": "16/9"
+  },
+  {
+    "id": "proj-085",
+    "name": "Yield Logic",
+    "sector": "AI & ML",
+    "role": "Lead Engineer",
+    "year": 2013,
+    "summary": "Re-platformed a legacy search stack into a serverless cloud-native service for the Middle East.",
+    "tags": [
+      "React",
+      "Python"
+    ],
+    "palette": 4,
+    "aspect": "16/9"
+  },
+  {
+    "id": "proj-032",
+    "name": "Elm Chain",
+    "sector": "Travel",
+    "role": "Chief Architect",
+    "year": 2012,
+    "summary": "Launched a serverless recommendation venture and grew it to 150 hospitals in Southeast Asia.",
+    "tags": [
+      "Postgres",
+      "WebRTC"
+    ],
+    "palette": 3,
+    "aspect": "3/4"
+  },
+  {
+    "id": "proj-047",
+    "name": "Cascade Core",
+    "sector": "Media",
+    "role": "Advisor",
+    "year": 2012,
+    "summary": "Re-platformed a legacy identity stack into a mobile-first cloud-native service for the Nordics.",
+    "tags": [
+      "Rust",
+      "gRPC",
+      "Kotlin"
+    ],
+    "palette": 0,
+    "aspect": "3/2"
+  },
+  {
+    "id": "proj-020",
+    "name": "Dune Port",
+    "sector": "Media",
+    "role": "Board Member",
+    "year": 2011,
+    "summary": "Bootstrapped a distributed billing startup to profitability across the Middle East.",
+    "tags": [
+      "TypeScript",
+      "Go",
+      "Edge",
+      "Postgres"
+    ],
+    "palette": 3,
+    "aspect": "3/2"
+  },
+  {
+    "id": "proj-031",
+    "name": "Flint Trade",
+    "sector": "Energy",
+    "role": "Board Member",
+    "year": 2011,
+    "summary": "Bootstrapped a serverless search startup to profitability across Southeast Asia.",
+    "tags": [
+      "Swift",
+      "Kubernetes"
+    ],
+    "palette": 2,
+    "aspect": "5/4"
+  },
+  {
+    "id": "proj-038",
+    "name": "Ridge Point",
+    "sector": "AI & ML",
+    "role": "CEO",
+    "year": 2011,
+    "summary": "Bootstrapped a distributed analytics startup to profitability across the EU.",
+    "tags": [
+      "Workers",
+      "Go",
+      "Edge",
+      "GraphQL"
+    ],
+    "palette": 0,
+    "aspect": "1/1"
+  },
+  {
+    "id": "proj-067",
+    "name": "Granite Link",
+    "sector": "Education",
+    "role": "CTO",
+    "year": 2011,
+    "summary": "Scaled a multi-tenant risk-scoring product from prototype to 300+ retail locations.",
+    "tags": [
+      "Rust",
+      "Swift",
+      "WebRTC"
+    ],
+    "palette": 2,
+    "aspect": "4/3"
+  },
+  {
+    "id": "proj-071",
+    "name": "Zephyr Cloud",
+    "sector": "Media",
+    "role": "Chief Architect",
+    "year": 2011,
+    "summary": "Scaled a distributed payments product from prototype to 40 enterprise clients.",
+    "tags": [
+      "React",
+      "Cloudflare",
+      "Python",
+      "Kafka"
+    ],
+    "palette": 0,
+    "aspect": "1/1"
+  },
+  {
+    "id": "proj-096",
+    "name": "Solstice Cloud",
+    "sector": "Travel",
+    "role": "Product Lead",
+    "year": 2011,
+    "summary": "Scaled a high-throughput analytics product from prototype to 1B+ events per day.",
+    "tags": [
+      "Kotlin",
+      "Workers",
+      "React",
+      "Go"
+    ],
+    "palette": 4,
+    "aspect": "16/9"
+  },
+  {
+    "id": "proj-098",
+    "name": "Vector Logic",
+    "sector": "Energy",
+    "role": "Advisor",
+    "year": 2011,
+    "summary": "Bootstrapped a privacy-first telemetry startup to profitability across the EU.",
+    "tags": [
+      "Kotlin",
+      "IoT",
+      "WebRTC"
+    ],
+    "palette": 1,
+    "aspect": "5/4"
+  },
+  {
+    "id": "proj-036",
+    "name": "Pulse Link",
+    "sector": "Real Estate",
+    "role": "Product Lead",
+    "year": 2010,
+    "summary": "Architected event-driven messaging infrastructure powering 1B+ events per day.",
+    "tags": [
+      "Kafka",
+      "Workers"
+    ],
+    "palette": 0,
+    "aspect": "3/4"
+  },
+  {
+    "id": "proj-099",
+    "name": "Atlas Metrics",
+    "sector": "Travel",
+    "role": "Co-Founder",
+    "year": 2010,
+    "summary": "Scaled a API-first identity product from prototype to 6 national operators.",
+    "tags": [
+      "Kotlin",
+      "Rust",
+      "GraphQL",
+      "TypeScript"
+    ],
+    "palette": 1,
+    "aspect": "4/5"
+  },
+  {
+    "id": "proj-014",
+    "name": "Delta Hub",
+    "sector": "GovTech",
+    "role": "Product Lead",
+    "year": 2009,
+    "summary": "Re-platformed a legacy messaging stack into a data-intensive cloud-native service for the Middle East.",
+    "tags": [
+      "GraphQL",
+      "IoT"
+    ],
+    "palette": 1,
+    "aspect": "16/9"
+  },
+  {
+    "id": "proj-018",
+    "name": "Meridian Point",
+    "sector": "E-commerce",
+    "role": "Investor",
+    "year": 2009,
+    "summary": "Bootstrapped a real-time supply-chain startup to profitability across the EU.",
+    "tags": [
+      "Kotlin",
+      "LLMs",
+      "React",
+      "Redis"
+    ],
+    "palette": 4,
+    "aspect": "5/4"
+  },
+  {
+    "id": "proj-035",
+    "name": "Xenon Pay",
+    "sector": "Real Estate",
+    "role": "Investor",
+    "year": 2009,
+    "summary": "Led the design of a composable messaging system, later acquired by a APAC group.",
+    "tags": [
+      "Edge",
+      "Kotlin",
+      "GraphQL"
+    ],
+    "palette": 0,
+    "aspect": "5/4"
+  },
+  {
+    "id": "proj-021",
+    "name": "Xenon Grid",
+    "sector": "Travel",
+    "role": "Investor",
+    "year": 2008,
+    "summary": "Architected distributed content-delivery infrastructure powering 80k merchants.",
+    "tags": [
+      "Workers",
+      "Kubernetes",
+      "WebRTC"
+    ],
+    "palette": 3,
+    "aspect": "5/4"
+  },
+  {
+    "id": "proj-097",
+    "name": "Vantage Hub",
+    "sector": "GovTech",
+    "role": "Board Member",
+    "year": 2008,
+    "summary": "Scaled a composable messaging product from prototype to 6 national operators.",
+    "tags": [
+      "Postgres",
+      "Redis",
+      "GraphQL",
+      "Edge"
+    ],
+    "palette": 1,
+    "aspect": "3/4"
+  },
+  {
+    "id": "proj-039",
+    "name": "Xenon Link",
+    "sector": "Energy",
+    "role": "Investor",
+    "year": 2007,
+    "summary": "Re-platformed a legacy supply-chain stack into a serverless cloud-native service for emerging markets.",
+    "tags": [
+      "Edge",
+      "WebRTC",
+      "GraphQL"
+    ],
+    "palette": 4,
+    "aspect": "3/4"
+  },
+  {
+    "id": "proj-054",
+    "name": "Xenon Route",
+    "sector": "Fintech",
+    "role": "CTO",
+    "year": 2007,
+    "summary": "Advised on a distributed risk-scoring rollout reaching 500k daily transactions.",
+    "tags": [
+      "Go",
+      "TypeScript",
+      "Swift"
+    ],
+    "palette": 2,
+    "aspect": "4/5"
+  },
+  {
+    "id": "proj-064",
+    "name": "Xenon Hub",
+    "sector": "AI & ML",
+    "role": "Lead Engineer",
+    "year": 2007,
+    "summary": "Architected data-intensive search infrastructure powering 150 hospitals.",
+    "tags": [
+      "Kafka",
+      "LLMs"
+    ],
+    "palette": 0,
+    "aspect": "16/9"
+  },
+  {
+    "id": "proj-056",
+    "name": "Nimbus Point",
+    "sector": "Real Estate",
+    "role": "Advisor",
+    "year": 2005,
+    "summary": "Led the design of a data-intensive marketplace system, later acquired by a Europe group.",
+    "tags": [
+      "Workers",
+      "React"
+    ],
+    "palette": 0,
+    "aspect": "4/5"
+  },
+  {
+    "id": "proj-092",
+    "name": "Tundra Desk",
+    "sector": "Travel",
+    "role": "Product Lead",
+    "year": 2005,
+    "summary": "Scaled a real-time supply-chain product from prototype to 6 national operators.",
+    "tags": [
+      "Python",
+      "Terraform",
+      "Edge",
+      "GraphQL"
+    ],
+    "palette": 3,
+    "aspect": "16/9"
+  },
+  {
+    "id": "proj-013",
+    "name": "Cascade Mesh",
+    "sector": "Travel",
+    "role": "Advisor",
+    "year": 2004,
+    "summary": "Advised on a serverless onboarding rollout reaching 500k daily transactions.",
+    "tags": [
+      "WebRTC",
+      "React",
+      "gRPC",
+      "GraphQL"
+    ],
+    "palette": 4,
+    "aspect": "1/1"
+  },
+  {
+    "id": "proj-040",
+    "name": "Juniper Base",
+    "sector": "E-commerce",
+    "role": "Chief Architect",
+    "year": 2004,
+    "summary": "Led the design of a privacy-first compliance system, later acquired by a the Nordics group.",
+    "tags": [
+      "LLMs",
+      "TypeScript"
+    ],
+    "palette": 1,
+    "aspect": "4/3"
+  }
+]
