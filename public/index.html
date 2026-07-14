@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Peter A. Moelgaard — General Manager &amp; Founder</title>
-  <meta name="description" content="Peter A. Moelgaard — General Manager & Founder. Connect via LinkedIn, WhatsApp, Line, Signal, Telegram, WeChat, or download the vCard.">
+  <title>Peter A. Moelgaard</title>
+  <meta name="description" content="Peter A. Moelgaard — connect via LinkedIn, WhatsApp, Line, Signal, Telegram, WeChat, or download the vCard.">
   <meta property="og:title" content="Peter A. Moelgaard">
-  <meta property="og:description" content="General Manager & Founder — connect via LinkedIn, WhatsApp, Line, Signal, Telegram, WeChat, or download the vCard.">
+  <meta property="og:description" content="Connect via LinkedIn, WhatsApp, Line, Signal, Telegram, WeChat, or download the vCard.">
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://www.pemo.me/">
   <meta property="og:image" content="https://www.pemo.me/assets/portrait.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#07070c">
+  <meta name="theme-color" content="#f7f6f2">
   <link rel="icon" href="/assets/favicon.png" type="image/png">
   <link rel="canonical" href="https://www.pemo.me/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,6 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Peter A. Moelgaard",
-    "jobTitle": "General Manager & Founder",
     "url": "https://www.pemo.me/",
     "image": "https://www.pemo.me/assets/portrait.jpg",
     "email": "mailto:admin@pemo.me",
@@ -36,18 +35,19 @@
   </script>
   <style>
     :root {
-      --bg: #07070c;
-      --bg2: #0c0c14;
-      --ink: #f4f4f8;
-      --body: #a7a7b8;
-      --muted: #63637a;
-      --line: rgba(255, 255, 255, 0.08);
-      --glass: rgba(255, 255, 255, 0.03);
+      --bg: #f7f6f2;
+      --surface: #ffffff;
+      --ink: #1c1c26;
+      --body: #4e4e5c;
+      --muted: #8c8c9a;
+      --line: rgba(28, 28, 60, 0.09);
+      --glass: rgba(255, 255, 255, 0.72);
       --c1: #6d5cff;
-      --c2: #00d4ff;
+      --c2: #00b3e6;
       --c3: #ff3d81;
       --grad: linear-gradient(100deg, var(--c1), var(--c2) 50%, var(--c3));
       --radius: 22px;
+      --shadow: 0 1px 2px rgba(28, 28, 60, 0.05), 0 12px 36px rgba(28, 28, 60, 0.08);
     }
     * { box-sizing: border-box; margin: 0; }
     html { scroll-behavior: smooth; }
@@ -62,14 +62,14 @@
     }
     ::selection { background: var(--c1); color: #fff; }
 
-    /* ---------- animated aurora backdrop ---------- */
+    /* ---------- animated aurora backdrop (pastel, light) ---------- */
     .aurora {
       position: fixed;
       inset: 0;
       z-index: -2;
       overflow: hidden;
       background:
-        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(109, 92, 255, 0.16), transparent 60%),
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(109, 92, 255, 0.10), transparent 60%),
         var(--bg);
     }
     .aurora span {
@@ -77,14 +77,13 @@
       width: 55vmax;
       height: 55vmax;
       border-radius: 50%;
-      filter: blur(90px);
-      opacity: 0.20;
-      mix-blend-mode: screen;
+      filter: blur(100px);
+      opacity: 0.16;
       animation: drift 26s ease-in-out infinite alternate;
     }
     .aurora span:nth-child(1) { background: var(--c1); top: -20vmax; left: -10vmax; }
-    .aurora span:nth-child(2) { background: var(--c2); top: 30%; right: -22vmax; animation-duration: 32s; animation-delay: -8s; }
-    .aurora span:nth-child(3) { background: var(--c3); bottom: -25vmax; left: 20%; animation-duration: 38s; animation-delay: -16s; opacity: 0.13; }
+    .aurora span:nth-child(2) { background: var(--c2); top: 30%; right: -22vmax; animation-duration: 32s; animation-delay: -8s; opacity: 0.13; }
+    .aurora span:nth-child(3) { background: var(--c3); bottom: -25vmax; left: 20%; animation-duration: 38s; animation-delay: -16s; opacity: 0.10; }
     @keyframes drift {
       from { transform: translate3d(0, 0, 0) scale(1); }
       to   { transform: translate3d(9vmax, 7vmax, 0) scale(1.25); }
@@ -95,8 +94,8 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+        linear-gradient(rgba(28, 28, 60, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(28, 28, 60, 0.035) 1px, transparent 1px);
       background-size: 56px 56px;
       mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 75%);
       -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 75%);
@@ -106,39 +105,12 @@
 
     /* ---------- hero ---------- */
     .hero {
-      min-height: 92svh;
+      min-height: 88svh;
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
       align-items: center;
       gap: 56px;
-      padding: 96px 0 64px;
-    }
-    .kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--ink);
-      border: 1px solid var(--line);
-      background: var(--glass);
-      backdrop-filter: blur(8px);
-      padding: 9px 18px;
-      border-radius: 999px;
-      margin-bottom: 28px;
-    }
-    .kicker::before {
-      content: "";
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--grad);
-      animation: pulse 2.2s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(109, 92, 255, 0.55); }
-      50% { box-shadow: 0 0 0 9px rgba(109, 92, 255, 0); }
+      padding: 88px 0 64px;
     }
     h1 {
       font-family: "Space Grotesk", sans-serif;
@@ -165,7 +137,6 @@
       font-size: 1.16rem;
       max-width: 47ch;
       margin-bottom: 40px;
-      color: var(--body);
     }
     .lede strong { color: var(--ink); font-weight: 600; }
     .cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
@@ -189,17 +160,17 @@
       color: #fff;
       background: var(--grad);
       background-size: 180% 100%;
-      box-shadow: 0 8px 32px rgba(109, 92, 255, 0.35);
+      box-shadow: 0 10px 28px rgba(109, 92, 255, 0.30);
       animation: shimmer 6s linear infinite;
     }
-    .btn-primary:hover { box-shadow: 0 12px 44px rgba(109, 92, 255, 0.55); }
+    .btn-primary:hover { box-shadow: 0 14px 38px rgba(109, 92, 255, 0.42); }
     .btn-ghost {
       color: var(--ink);
       border: 1px solid var(--line);
-      background: var(--glass);
-      backdrop-filter: blur(8px);
+      background: var(--surface);
+      box-shadow: var(--shadow);
     }
-    .btn-ghost:hover { border-color: rgba(255,255,255,0.28); }
+    .btn-ghost:hover { border-color: rgba(28, 28, 60, 0.25); }
 
     /* portrait with rotating conic ring */
     .portrait-stage { position: relative; justify-self: center; }
@@ -224,8 +195,8 @@
       inset: -22px;
       border-radius: 50%;
       background: conic-gradient(from 0deg, var(--c1), var(--c2), var(--c3), var(--c1));
-      filter: blur(42px);
-      opacity: 0.4;
+      filter: blur(46px);
+      opacity: 0.22;
       animation: spin 9s linear infinite;
       z-index: -1;
     }
@@ -237,7 +208,7 @@
       object-fit: cover;
       object-position: 35% 20%;
       border-radius: 50%;
-      border: 6px solid var(--bg);
+      border: 6px solid var(--surface);
       display: block;
       animation: float 7s ease-in-out infinite;
     }
@@ -253,11 +224,12 @@
       font-size: 0.8rem;
       font-weight: 600;
       color: var(--ink);
-      background: rgba(12, 12, 20, 0.75);
+      background: var(--glass);
       border: 1px solid var(--line);
       backdrop-filter: blur(12px);
       padding: 10px 16px;
       border-radius: 14px;
+      box-shadow: var(--shadow);
       animation: float 7s ease-in-out infinite reverse;
     }
 
@@ -265,6 +237,7 @@
     .marquee {
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.5);
       padding: 18px 0;
       overflow: hidden;
       -webkit-mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
@@ -312,7 +285,7 @@
     }
     .channel {
       position: relative;
-      background: var(--glass);
+      background: var(--surface);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 26px 22px 24px;
@@ -322,15 +295,15 @@
       align-items: center;
       gap: 14px;
       overflow: hidden;
-      backdrop-filter: blur(10px);
-      transition: transform 0.25s ease, border-color 0.25s ease;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
     /* cursor spotlight */
     .channel::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 50%), var(--spot, rgba(109,92,255,0.16)), transparent 65%);
+      background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 50%), var(--spot, rgba(109,92,255,0.10)), transparent 65%);
       opacity: 0;
       transition: opacity 0.3s ease;
       pointer-events: none;
@@ -338,7 +311,7 @@
     .channel:hover::before { opacity: 1; }
     .channel:hover {
       transform: translateY(-6px);
-      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 2px 4px rgba(28, 28, 60, 0.06), 0 20px 48px rgba(28, 28, 60, 0.13);
     }
     .channel h3 {
       font-family: "Space Grotesk", sans-serif;
@@ -352,7 +325,7 @@
     .dot {
       width: 11px; height: 11px; border-radius: 50%;
       display: inline-block;
-      box-shadow: 0 0 14px 1px var(--dc, transparent);
+      box-shadow: 0 0 10px 1px var(--dc, transparent);
       background: var(--dc);
     }
     .channel img.qr {
@@ -361,6 +334,7 @@
       border-radius: 14px;
       background: #fff;
       padding: 9px;
+      border: 1px solid var(--line);
       transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.3);
     }
     .channel:hover img.qr { transform: scale(1.06) rotate(-1.2deg); }
@@ -373,9 +347,9 @@
       color: var(--ink);
       text-decoration: none;
       border-bottom: 1px solid transparent;
-      transition: border-color 0.2s ease;
+      transition: border-color 0.2s ease, color 0.2s ease;
     }
-    .channel a.link:hover { border-color: var(--c2); color: #fff; }
+    .channel a.link:hover { border-color: var(--c1); color: var(--c1); }
 
     /* ---------- vcard band ---------- */
     .vcard-band {
@@ -389,10 +363,11 @@
       gap: 28px;
       overflow: hidden;
       border: 1px solid var(--line);
+      box-shadow: var(--shadow);
       background:
-        radial-gradient(120% 180% at 0% 0%, rgba(109, 92, 255, 0.22), transparent 55%),
-        radial-gradient(120% 180% at 100% 100%, rgba(255, 61, 129, 0.16), transparent 55%),
-        var(--bg2);
+        radial-gradient(120% 180% at 0% 0%, rgba(109, 92, 255, 0.14), transparent 55%),
+        radial-gradient(120% 180% at 100% 100%, rgba(255, 61, 129, 0.10), transparent 55%),
+        var(--surface);
     }
     .vcard-band h2 { font-size: clamp(1.7rem, 3.4vw, 2.5rem); margin-bottom: 8px; }
     .vcard-band p { color: var(--body); max-width: 44ch; }
@@ -421,7 +396,7 @@
         grid-template-columns: 1fr;
         text-align: center;
         gap: 44px;
-        padding-top: 72px;
+        padding-top: 64px;
         min-height: auto;
       }
       .portrait-stage { order: -1; }
@@ -442,7 +417,6 @@
   <main class="wrap">
     <header class="hero">
       <div>
-        <p class="kicker">General Manager &amp; Founder</p>
         <h1>Peter A.<br><span class="grad">Moelgaard</span></h1>
         <p class="lede">Technology executive and entrepreneur. <strong>Pick a channel, scan a code,</strong> or save my card straight into your contacts — reaching me should take seconds, not searches.</p>
         <div class="cta-row">
@@ -472,42 +446,42 @@
       <h2 class="reveal">Connect <span class="grad">with me</span></h2>
       <p class="section-sub reveal" style="--d:.08s">Scan a QR code with your phone, or tap the link on mobile.</p>
       <div class="grid">
-        <div class="channel reveal" style="--dc:#0a66c2; --spot:rgba(10,102,194,0.22); --d:0s">
+        <div class="channel reveal" style="--dc:#0a66c2; --spot:rgba(10,102,194,0.12); --d:0s">
           <h3><span class="dot"></span>LinkedIn</h3>
           <a href="https://go.pemo.me/linkedin"><img class="qr" src="/assets/linkedin-qr.png" alt="LinkedIn QR code" loading="lazy"></a>
           <a class="link" href="https://go.pemo.me/linkedin">Open profile →</a>
         </div>
-        <div class="channel reveal" style="--dc:#25d366; --spot:rgba(37,211,102,0.20); --d:.06s">
+        <div class="channel reveal" style="--dc:#25d366; --spot:rgba(37,211,102,0.12); --d:.06s">
           <h3><span class="dot"></span>WhatsApp</h3>
           <a href="https://go.pemo.me/whats-app"><img class="qr" src="/assets/whatsapp-qr.png" alt="WhatsApp QR code" loading="lazy"></a>
           <a class="link" href="https://go.pemo.me/whats-app">Start a chat →</a>
         </div>
-        <div class="channel reveal" style="--dc:#06c755; --spot:rgba(6,199,85,0.20); --d:.12s">
+        <div class="channel reveal" style="--dc:#06c755; --spot:rgba(6,199,85,0.12); --d:.12s">
           <h3><span class="dot"></span>Line</h3>
           <a href="https://go.pemo.me/line-app"><img class="qr" src="/assets/line-qr.png" alt="Line QR code" loading="lazy"></a>
           <a class="link" href="https://go.pemo.me/line-app">Add on Line →</a>
         </div>
-        <div class="channel reveal" style="--dc:#3a76f0; --spot:rgba(58,118,240,0.22); --d:.18s">
+        <div class="channel reveal" style="--dc:#3a76f0; --spot:rgba(58,118,240,0.12); --d:.18s">
           <h3><span class="dot"></span>Signal</h3>
           <a href="https://go.pemo.me/signal"><img class="qr" src="/assets/signal-qr.png" alt="Signal QR code" loading="lazy"></a>
           <a class="link" href="https://go.pemo.me/signal">Add on Signal →</a>
         </div>
-        <div class="channel reveal" style="--dc:#26a5e4; --spot:rgba(38,165,228,0.22); --d:0s">
+        <div class="channel reveal" style="--dc:#26a5e4; --spot:rgba(38,165,228,0.12); --d:0s">
           <h3><span class="dot"></span>Telegram</h3>
           <a href="https://go.pemo.me/telegram"><img class="qr" src="/assets/telegram-qr.png" alt="Telegram QR code" loading="lazy"></a>
           <a class="link" href="https://go.pemo.me/telegram">Message me →</a>
         </div>
-        <div class="channel reveal" style="--dc:#07c160; --spot:rgba(7,193,96,0.20); --d:.06s">
+        <div class="channel reveal" style="--dc:#07c160; --spot:rgba(7,193,96,0.12); --d:.06s">
           <h3><span class="dot"></span>WeChat</h3>
           <a href="https://go.pemo.me/wechat"><img class="qr" src="/assets/wechat-qr.png" alt="WeChat QR code" loading="lazy"></a>
           <p class="hint">Username: <strong>petermoelgaard</strong></p>
         </div>
-        <div class="channel reveal" style="--dc:#1877f2; --spot:rgba(24,119,242,0.22); --d:.12s">
+        <div class="channel reveal" style="--dc:#1877f2; --spot:rgba(24,119,242,0.12); --d:.12s">
           <h3><span class="dot"></span>Facebook</h3>
           <a href="https://go.pemo.me/facebook"><img class="qr" src="/assets/facebook-qr.png" alt="Facebook QR code" loading="lazy"></a>
           <a class="link" href="https://go.pemo.me/facebook">Open profile →</a>
         </div>
-        <div class="channel reveal" style="--dc:#e1306c; --spot:rgba(225,48,108,0.22); --d:.18s">
+        <div class="channel reveal" style="--dc:#e1306c; --spot:rgba(225,48,108,0.12); --d:.18s">
           <h3><span class="dot"></span>Instagram</h3>
           <a href="https://go.pemo.me/instagram"><img class="qr" src="/assets/instagram-qr.png" alt="Instagram QR code" loading="lazy"></a>
           <a class="link" href="https://go.pemo.me/instagram">Open profile →</a>
