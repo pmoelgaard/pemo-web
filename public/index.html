@@ -11,7 +11,7 @@
   <meta property="og:url" content="https://www.pemo.me/">
   <meta property="og:image" content="https://www.pemo.me/assets/portrait.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#14304d">
+  <meta name="theme-color" content="#f6f1e4">
   <link rel="icon" href="/assets/favicon.png" type="image/png">
   <link rel="canonical" href="https://www.pemo.me/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,14 +36,18 @@
   <style>
     :root {
       --cream: #f6f1e4;
-      --navy: #14304d;
-      --navy-deep: #0d2135;
-      --green: #1e5741;
-      --green-soft: #7fa08f;
-      --gray: #3f444b;
-      --ink: #14304d;
-      --muted: #82868d;
+      --cream-soft: #faf7ee;
+      --navy: #1d3a58;          /* softened navy — ink & accents only */
+      --navy-deep: #14304d;
+      --green: #2a6350;         /* softened dark green */
+      --green-soft: #8fac9c;
+      --gray: #4a4f57;
+      --ink: #1d3a58;
+      --muted: #8b8e94;
       --mono: "Space Mono", monospace;
+      --wash-navy: rgba(29, 58, 88, 0.06);
+      --wash-green: rgba(42, 99, 80, 0.07);
+      --soft-shadow: 0 2px 6px rgba(29, 58, 88, 0.04), 0 24px 64px rgba(29, 58, 88, 0.09);
     }
     * { box-sizing: border-box; margin: 0; }
     html { scroll-behavior: smooth; }
@@ -63,7 +67,7 @@
     a:focus-visible, button:focus-visible { outline: 2px solid var(--green-soft); outline-offset: 3px; }
     button { font: inherit; background: none; border: 0; cursor: pointer; padding: 0; color: inherit; }
 
-    /* ================= fixed chrome (blends over dark & light) ================= */
+    /* ================= fixed chrome ================= */
     .wordmark {
       position: fixed; top: 22px; left: 28px; z-index: 40;
       font-family: var(--mono);
@@ -72,19 +76,17 @@
       letter-spacing: 0.22em;
       text-transform: uppercase;
       text-decoration: none;
-      color: var(--cream);
-      mix-blend-mode: difference;
+      color: var(--navy);
     }
     .rail {
       position: fixed; top: 18px; right: 22px; z-index: 40;
       display: flex; flex-direction: column; align-items: center; gap: 6px;
-      mix-blend-mode: difference;
     }
     .rail button {
       width: 44px; height: 40px;
       display: grid; place-items: center;
-      color: var(--cream);
-      opacity: 0.9;
+      color: var(--navy);
+      opacity: 0.85;
       transition: opacity 0.15s ease, transform 0.15s ease;
     }
     .rail button:hover { opacity: 1; transform: scale(1.1); }
@@ -96,16 +98,17 @@
       font-size: 0.66rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--cream);
-      mix-blend-mode: difference;
-      opacity: 0.75;
+      color: var(--navy);
+      opacity: 0.6;
     }
     .snap-toggle:hover { opacity: 1; }
 
     /* ================= overlay menu (chapter index) ================= */
     .overlay {
       position: fixed; inset: 0; z-index: 50;
-      background: var(--navy-deep);
+      background:
+        radial-gradient(120% 130% at 20% 0%, rgba(42, 99, 80, 0.35), transparent 60%),
+        var(--navy-deep);
       display: grid; place-items: center;
       opacity: 0; visibility: hidden;
       transition: opacity 0.25s ease, visibility 0.25s ease;
@@ -140,33 +143,58 @@
       min-height: 100svh;
       scroll-snap-align: start;
       position: relative;
-    }
-    .panel.dark {
-      background:
-        radial-gradient(130% 110% at 72% -10%, #1c405f 0%, var(--navy) 48%, var(--navy-deep) 100%);
-      color: var(--cream);
       display: flex; flex-direction: column; justify-content: center;
       overflow: hidden;
     }
-    .panel.dark::before {
-      content: "";
-      position: absolute; inset: 0;
-      background-image: radial-gradient(rgba(246,241,228,0.07) 1px, transparent 1px);
-      background-size: 26px 26px;
-      -webkit-mask-image: radial-gradient(90% 80% at 60% 30%, black 20%, transparent 80%);
-      mask-image: radial-gradient(90% 80% at 60% 30%, black 20%, transparent 80%);
+    .inner { width: min(1180px, 100%); margin: 0 auto; padding: 0 max(28px, 4vw); position: relative; z-index: 2; }
+
+    /* soft washes instead of dark fields */
+    .panel .wash {
+      position: absolute; inset: -20%;
       pointer-events: none;
+      z-index: 0;
     }
-    .panel.dark::after {
-      content: "";
-      position: absolute;
-      top: -34vmax; right: -22vmax;
-      width: 66vmax; aspect-ratio: 1;
-      border: 1px solid rgba(246, 241, 228, 0.13);
+    #intro .wash {
+      background:
+        radial-gradient(52% 44% at 78% 18%, var(--wash-navy), transparent 70%),
+        radial-gradient(46% 40% at 12% 78%, var(--wash-green), transparent 70%);
+    }
+    #numbers .wash {
+      background:
+        radial-gradient(50% 46% at 16% 22%, var(--wash-green), transparent 70%),
+        radial-gradient(44% 40% at 86% 74%, var(--wash-navy), transparent 70%);
+    }
+    #arc .wash {
+      background:
+        radial-gradient(56% 48% at 50% 10%, rgba(246, 241, 228, 0.9), transparent 75%),
+        radial-gradient(48% 44% at 82% 82%, var(--wash-green), transparent 70%),
+        radial-gradient(40% 40% at 10% 60%, var(--wash-navy), transparent 70%);
+    }
+
+    /* parallax decor: rings, dots, ghost type */
+    .decor { position: absolute; pointer-events: none; z-index: 1; }
+    .ring {
+      border: 1px solid rgba(29, 58, 88, 0.14);
       border-radius: 50%;
-      pointer-events: none;
+      aspect-ratio: 1;
     }
-    .inner { width: min(1180px, 100%); margin: 0 auto; padding: 0 max(28px, 4vw); }
+    .ring.green { border-color: rgba(42, 99, 80, 0.16); }
+    .dots {
+      background-image: radial-gradient(rgba(29, 58, 88, 0.13) 1.2px, transparent 1.2px);
+      background-size: 22px 22px;
+      -webkit-mask-image: radial-gradient(60% 60% at 50% 50%, black 30%, transparent 75%);
+      mask-image: radial-gradient(60% 60% at 50% 50%, black 30%, transparent 75%);
+    }
+    .ghost {
+      font-weight: 200;
+      font-size: clamp(7rem, 22vw, 19rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(29, 58, 88, 0.10);
+      white-space: nowrap;
+      user-select: none;
+    }
 
     .micro {
       font-family: var(--mono);
@@ -174,7 +202,7 @@
       font-weight: 700;
       letter-spacing: 0.26em;
       text-transform: uppercase;
-      color: var(--green-soft);
+      color: var(--green);
       margin-bottom: 30px;
     }
     .statement {
@@ -182,62 +210,133 @@
       font-size: clamp(2.6rem, 7.2vw, 6.2rem);
       line-height: 1.06;
       letter-spacing: -0.025em;
-      color: var(--cream);
+      color: var(--ink);
       max-width: 16ch;
       margin-bottom: 36px;
     }
-    .statement strong { font-weight: 400; }
+    .statement strong { font-weight: 400; color: var(--green); }
+    .statement .w {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(0.55em) rotate(1.5deg);
+      transition: opacity 0.55s ease, transform 0.65s cubic-bezier(0.2, 0.75, 0.25, 1);
+      transition-delay: var(--wd, 0s);
+      will-change: transform;
+    }
+    .in .statement .w, .statement.in .w { opacity: 1; transform: none; }
+    /* .now = finalize instantly (first paint, or frozen timelines in throttled tabs) */
+    .statement.now .w { transition: none !important; }
     .sub {
       font-weight: 300;
       font-size: 1.12rem;
-      color: rgba(246, 241, 228, 0.72);
+      color: var(--gray);
       max-width: 52ch;
     }
-    .sub a { color: var(--cream); text-decoration-color: var(--green-soft); text-underline-offset: 4px; }
+    .sub a { color: var(--navy); text-decoration-color: var(--green-soft); text-underline-offset: 4px; }
+
+    /* portrait card in intro — soft, floating */
+    .portrait-card {
+      position: absolute;
+      right: max(28px, 6vw);
+      top: 50%;
+      width: clamp(180px, 21vw, 300px);
+      z-index: 1;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--soft-shadow);
+      transform: translateY(-50%);
+    }
+    .portrait-card img { display: block; width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: 35% 18%; }
+    .portrait-card::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(200deg, rgba(246, 241, 228, 0.16), transparent 45%);
+    }
+    @media (max-width: 1080px) { .portrait-card { display: none; } }
 
     .facts {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
-      margin-top: 64px;
+      gap: 22px;
+      margin-top: 56px;
     }
-    .fact { border-top: 1px solid rgba(246, 241, 228, 0.28); padding-top: 20px; }
+    .fact {
+      background: var(--cream-soft);
+      border: 1px solid rgba(29, 58, 88, 0.08);
+      border-radius: 20px;
+      padding: 26px 24px 22px;
+      box-shadow: var(--soft-shadow);
+    }
     .fact h3 {
       font-family: var(--mono);
       font-size: 0.74rem;
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--green-soft);
+      color: var(--green);
       margin-bottom: 10px;
     }
-    .fact p { font-weight: 300; font-size: 0.98rem; color: rgba(246, 241, 228, 0.78); }
+    .fact p { font-weight: 300; font-size: 0.98rem; color: var(--gray); }
     .fact .num {
       display: block;
       font-weight: 200;
       font-size: clamp(2.4rem, 4.5vw, 3.8rem);
       line-height: 1.1;
-      color: var(--cream);
+      color: var(--navy);
       margin-bottom: 6px;
+      font-variant-numeric: tabular-nums;
     }
-    @media (max-width: 760px) { .facts { grid-template-columns: 1fr; gap: 26px; margin-top: 44px; } }
+    @media (max-width: 760px) { .facts { grid-template-columns: 1fr; gap: 16px; margin-top: 44px; } }
 
     .hint {
       position: absolute; bottom: 26px; left: 50%;
       transform: translateX(-50%);
-      color: rgba(246, 241, 228, 0.5);
+      color: rgba(29, 58, 88, 0.45);
       animation: bob 2.4s ease-in-out infinite;
+      z-index: 2;
     }
     @keyframes bob { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 8px); } }
 
+    /* ================= arc chapter (scroll-driven ribbons) ================= */
+    #arc { justify-content: center; }
+    #arc .inner { margin-bottom: 12px; }
+    .ribbons { position: relative; z-index: 2; display: grid; gap: 14px; padding: 26px 0 8px; }
+    .ribbon { display: flex; gap: 14px; width: max-content; will-change: transform; }
+    .chip {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: var(--navy);
+      background: var(--cream-soft);
+      border: 1px solid rgba(29, 58, 88, 0.10);
+      border-radius: 999px;
+      padding: 10px 20px;
+      box-shadow: 0 1px 3px rgba(29, 58, 88, 0.05);
+    }
+    .chip.green { color: var(--green); border-color: rgba(42, 99, 80, 0.14); }
+    .chip b { font-weight: 700; }
+    .arc-years {
+      display: flex; align-items: baseline; gap: 4vw;
+      font-weight: 200;
+      color: var(--navy);
+      font-size: clamp(3rem, 9vw, 7rem);
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .arc-years .sep { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(42,99,80,0.5), rgba(29,58,88,0.25)); align-self: center; }
+    .arc-years em { font-style: normal; color: var(--green); }
+
     /* ================= the wall ================= */
-    #work { background: var(--cream); padding-bottom: 0; }
+    #work { background: var(--cream); padding-bottom: 0; justify-content: flex-start; }
     .workbar {
       position: sticky; top: 0; z-index: 30;
       display: flex; align-items: center; justify-content: flex-end;
       gap: 20px;
-      background: var(--cream);
-      border-bottom: 1px solid rgba(20, 48, 77, 0.14);
+      background: rgba(246, 241, 228, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(29, 58, 88, 0.10);
       padding: 16px 84px 14px 230px;
       min-height: 58px;
     }
@@ -267,49 +366,57 @@
     .wall {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
-      gap: 3px;
-      padding: 3px;
+      gap: 10px;
+      padding: 10px;
     }
-    @media (max-width: 560px) { .wall { grid-template-columns: repeat(auto-fill, minmax(108px, 1fr)); } }
+    @media (max-width: 560px) { .wall { grid-template-columns: repeat(auto-fill, minmax(108px, 1fr)); gap: 7px; padding: 7px; } }
     .tile {
       position: relative;
       aspect-ratio: 1;
       overflow: hidden;
       display: grid; place-items: center;
-      animation: tile-in 0.35s ease backwards;
+      border-radius: 16px;
+      border: 1px solid rgba(29, 58, 88, 0.07);
+      box-shadow: 0 1px 3px rgba(29, 58, 88, 0.04);
+      animation: tile-in 0.45s ease backwards;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
     }
-    @keyframes tile-in { from { opacity: 0; } }
-    .t0 { background: var(--navy); }
+    .tile:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(29, 58, 88, 0.07), 0 18px 40px rgba(29, 58, 88, 0.10); }
+    @keyframes tile-in { from { opacity: 0; transform: scale(0.97); } }
+    /* soft, light tile palettes — navy/green as ink, not field */
+    .t0 { background: #e3e8ec; }
     .t1 {
-      background: var(--green);
-      background-image: repeating-linear-gradient(135deg, rgba(246,241,228,0.05) 0 2px, transparent 2px 14px);
+      background: #dde6dd;
+      background-image: repeating-linear-gradient(135deg, rgba(42,99,80,0.05) 0 2px, transparent 2px 14px);
     }
-    .t2 { background: #1c405f; }
+    .t2 { background: #ece7d8; }
     .t3 {
-      background: var(--navy-deep);
-      background-image: repeating-radial-gradient(circle at 80% 110%, transparent 0 20px, rgba(246,241,228,0.05) 20px 22px);
+      background: #d9e1e7;
+      background-image: repeating-radial-gradient(circle at 80% 110%, transparent 0 20px, rgba(29,58,88,0.05) 20px 22px);
     }
     .t4 {
-      background: var(--gray);
-      background-image: radial-gradient(rgba(246,241,228,0.07) 1px, transparent 1px);
+      background: #e7e5e0;
+      background-image: radial-gradient(rgba(29,58,88,0.07) 1px, transparent 1px);
       background-size: 14px 14px;
     }
-    .t5 { background: #16483a; }
+    .t5 { background: #d5e0d6; }
     .tile .code {
       font-weight: 300;
       font-size: 1.5rem;
       letter-spacing: 0.06em;
-      color: rgba(246, 241, 228, 0.88);
+      color: var(--navy);
     }
+    .t1 .code, .t5 .code { color: var(--green); }
+    .t4 .code { color: var(--gray); }
     .tile .tyear {
-      position: absolute; right: 9px; bottom: 6px;
+      position: absolute; right: 11px; bottom: 8px;
       font-family: var(--mono);
       font-size: 0.6rem;
-      color: rgba(246, 241, 228, 0.45);
+      color: rgba(29, 58, 88, 0.40);
     }
     .tile .veil {
       position: absolute; inset: 0;
-      background: rgba(13, 33, 53, 0.94);
+      background: rgba(42, 99, 80, 0.94);
       display: flex; flex-direction: column; justify-content: flex-end;
       gap: 3px;
       padding: 12px;
@@ -329,7 +436,7 @@
       font-size: 0.6rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--green-soft);
+      color: rgba(246, 241, 228, 0.75);
     }
 
     /* thin footer line at the end of the wall */
@@ -354,6 +461,8 @@
       transition-delay: var(--d, 0s);
     }
     .reveal.in { opacity: 1; transform: none; }
+    /* statements handle their own word-level animation */
+    .reveal.statement { opacity: 1; transform: none; }
 
     @media (max-width: 900px) {
       .workbar { padding: 46px 20px 12px; justify-content: flex-start; }
@@ -364,7 +473,7 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; transition: none !important; }
-      .reveal { opacity: 1; transform: none; }
+      .reveal, .statement .w { opacity: 1 !important; transform: none !important; }
     }
   </style>
 </head>
@@ -394,44 +503,76 @@
     <nav>
       <a href="#intro" data-jump="intro"><i>01</i> Introduction</a>
       <a href="#numbers" data-jump="numbers"><i>02</i> In numbers</a>
-      <a href="#work" data-jump="work"><i>03</i> Selected work</a>
-      <a href="/contact"><i>04</i> Contact</a>
+      <a href="#arc" data-jump="arc"><i>03</i> The arc</a>
+      <a href="#work" data-jump="work"><i>04</i> Selected work</a>
+      <a href="/contact"><i>05</i> Contact</a>
     </nav>
   </div>
 
   <main>
-    <section class="panel dark" id="intro">
+    <section class="panel" id="intro">
+      <div class="wash" data-plx="-6" aria-hidden="true"></div>
+      <div class="decor ghost" style="left:-2vw; top:6%;" data-plx="14" data-mouse="6" aria-hidden="true">BUILDER</div>
+      <div class="decor ring" style="width:44vmax; right:-16vmax; top:-14vmax;" data-plx="10" data-mouse="10" aria-hidden="true"></div>
+      <div class="decor ring green" style="width:20vmax; left:6vw; bottom:-6vmax;" data-plx="22" data-mouse="16" aria-hidden="true"></div>
+      <div class="decor dots" style="width:34vmax; height:30vmax; left:-8vmax; top:14%;" data-plx="18" data-mouse="12" aria-hidden="true"></div>
+      <div class="portrait-card" data-plx="-12" data-mouse="-8" aria-hidden="true">
+        <img src="/assets/portrait.jpg" alt="">
+      </div>
       <div class="inner">
         <p class="micro reveal">Peter A. Moelgaard — Technology executive &amp; entrepreneur</p>
-        <h1 class="statement reveal" style="--d:.08s">I build companies, platforms &amp; products<strong>.</strong></h1>
-        <p class="sub reveal" style="--d:.16s">From fintech rails to edge infrastructure — as founder, CTO, and board member. Based between Bangkok and Copenhagen.</p>
+        <h1 class="statement reveal" data-words style="--d:.08s">I build companies, platforms &amp; products<strong>.</strong></h1>
+        <p class="sub reveal" style="--d:.16s" data-plx="-4">From fintech rails to edge infrastructure — as founder, CTO, and board member. Based between Bangkok and Copenhagen.</p>
       </div>
       <div class="hint" aria-hidden="true">
         <svg width="18" height="10" viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l8 8 8-8"/></svg>
       </div>
     </section>
 
-    <section class="panel dark" id="numbers">
+    <section class="panel" id="numbers">
+      <div class="wash" data-plx="-6" aria-hidden="true"></div>
+      <div class="decor ghost" style="right:-4vw; top:2%;" data-plx="16" aria-hidden="true">1998</div>
+      <div class="decor ring" style="width:30vmax; left:-12vmax; bottom:-12vmax;" data-plx="12" aria-hidden="true"></div>
+      <div class="decor dots" style="width:30vmax; height:26vmax; right:-6vmax; bottom:4%;" data-plx="20" aria-hidden="true"></div>
       <div class="inner">
         <p class="micro reveal">02 — In numbers</p>
-        <h2 class="statement reveal" style="--d:.08s">Twenty-eight years of shipping<strong>.</strong></h2>
+        <h2 class="statement reveal" data-words style="--d:.08s">Twenty-eight years of shipping<strong>.</strong></h2>
         <div class="facts">
-          <div class="fact reveal" style="--d:.14s">
+          <div class="fact reveal" style="--d:.14s" data-plx="-8">
             <h3>Projects</h3>
-            <span class="num">100</span>
+            <span class="num" data-count="100">0</span>
             <p>Ventures, platforms, and products — founded, built, or steered to scale.</p>
           </div>
-          <div class="fact reveal" style="--d:.2s">
+          <div class="fact reveal" style="--d:.2s" data-plx="-14">
             <h3>Sectors</h3>
-            <span class="num">12</span>
+            <span class="num" data-count="12">0</span>
             <p>Fintech to govtech, healthtech to logistics — the pattern travels.</p>
           </div>
-          <div class="fact reveal" style="--d:.26s">
+          <div class="fact reveal" style="--d:.26s" data-plx="-20">
             <h3>Since</h3>
-            <span class="num">1998</span>
+            <span class="num" data-count="1998" data-count-from="1970">1970</span>
             <p>Two cities, one habit: staying closest to the architecture.</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="panel" id="arc">
+      <div class="wash" data-plx="-5" aria-hidden="true"></div>
+      <div class="decor ring green" style="width:36vmax; right:-14vmax; top:-10vmax;" data-plx="10" aria-hidden="true"></div>
+      <div class="inner">
+        <p class="micro reveal">03 — The arc</p>
+        <div class="arc-years reveal" style="--d:.08s" aria-label="From 1998 to today">
+          <span data-plx="6">1998</span>
+          <span class="sep" aria-hidden="true"></span>
+          <em data-plx="-6">today</em>
+        </div>
+        <p class="sub reveal" style="--d:.16s; margin-top:26px;" data-plx="-4">Every sector teaches the next one. The ribbons below drift through the territory covered so far — slide any of it under the cursor in <a href="#work">the wall</a>.</p>
+      </div>
+      <div class="ribbons" aria-hidden="true">
+        <div class="ribbon" id="ribbon-a" data-drift="-0.10"></div>
+        <div class="ribbon" id="ribbon-b" data-drift="0.07"></div>
+        <div class="ribbon" id="ribbon-c" data-drift="-0.05"></div>
       </div>
     </section>
 
@@ -450,6 +591,8 @@
   </main>
 
   <script>
+    const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     /* ---------- chapter navigation (mythodical-style) ---------- */
     const sections = [...document.querySelectorAll(".panel")];
     function currentSection() {
@@ -511,13 +654,45 @@
       snapBtn.textContent = `Scroll snap — ${on ? "on" : "off"}`;
     });
 
+    /* ---------- word-split statements: each word rises on reveal ---------- */
+    document.querySelectorAll("[data-words]").forEach((el) => {
+      const split = (node) => {
+        [...node.childNodes].forEach((child) => {
+          if (child.nodeType === Node.TEXT_NODE) {
+            const frag = document.createDocumentFragment();
+            child.textContent.split(/(\s+)/).forEach((part) => {
+              if (!part) return;
+              if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+              const w = document.createElement("span");
+              w.className = "w";
+              w.textContent = part;
+              frag.appendChild(w);
+            });
+            node.replaceChild(frag, child);
+          } else if (child.nodeType === Node.ELEMENT_NODE) {
+            split(child);
+          }
+        });
+      };
+      split(el);
+      el.querySelectorAll(".w").forEach((w, i) => w.style.setProperty("--wd", `${0.06 + i * 0.055}s`));
+    });
+
     /* ---------- statement reveal (no IntersectionObserver: unreliable
        update delivery in some embedded webviews) ---------- */
     const pending = new Set();
+    // finalize: snap an element to its revealed state. Used for content already
+    // in view at first paint, and as a watchdog for throttled/background tabs
+    // where the animation timeline freezes mid-transition.
+    function finalize(el) {
+      el.style.transition = "none";
+      el.classList.add("in", "now");
+    }
     document.querySelectorAll(".reveal").forEach((el) => {
       if (el.getBoundingClientRect().top < innerHeight) {
-        el.style.transition = "none";
-        el.classList.add("in");
+        finalize(el);
+        el.hasAttribute("data-count") && startCount(el);
+        el.querySelectorAll("[data-count]").forEach(startCount);
       } else {
         pending.add(el);
       }
@@ -526,15 +701,91 @@
       for (const el of pending) {
         if (el.getBoundingClientRect().top < innerHeight - 20) {
           el.classList.add("in");
+          el.querySelectorAll("[data-count]").forEach(startCount);
+          el.hasAttribute("data-count") && startCount(el);
           pending.delete(el);
+          setTimeout(() => finalize(el), 1600);
         }
       }
     }
-    let raf = 0;
-    addEventListener("scroll", () => {
-      if (!raf) raf = requestAnimationFrame(() => { raf = 0; checkReveals(); });
+    // fallback tick for throttled/background tabs where rAF and scroll
+    // events starve: keep reveals and parallax current
+    setInterval(() => {
+      if (pending.size) checkReveals();
+      if (typeof updateParallax === "function" && !reducedMotion) updateParallax();
+    }, 400);
+
+    /* ---------- animated counters ---------- */
+    const counted = new WeakSet();
+    function startCount(el) {
+      if (reducedMotion || counted.has(el)) { el.textContent = el.dataset.count; return; }
+      counted.add(el);
+      const to = parseInt(el.dataset.count, 10);
+      const from = parseInt(el.dataset.countFrom || "0", 10);
+      const t0 = performance.now();
+      const dur = 1400;
+      (function step(t) {
+        const p = Math.min(1, (t - t0) / dur);
+        const e = 1 - Math.pow(1 - p, 3);
+        el.textContent = String(Math.round(from + (to - from) * e));
+        if (p < 1) requestAnimationFrame(step);
+      })(t0);
+    }
+
+    /* ---------- parallax engine: scroll depth + pointer drift ----------
+       Every [data-plx] translates against its panel's scroll progress;
+       [data-mouse] layers also ease toward the pointer. One rAF loop,
+       transform-only, disabled under prefers-reduced-motion. */
+    const plxEls = [...document.querySelectorAll("[data-plx]")].map((el) => ({
+      el,
+      speed: parseFloat(el.dataset.plx),
+      mouse: parseFloat(el.dataset.mouse || "0"),
+      panel: el.closest(".panel"),
+    }));
+    const ribbons = [...document.querySelectorAll(".ribbon")].map((el) => ({
+      el,
+      drift: parseFloat(el.dataset.drift),
+    }));
+    let mx = 0, my = 0, tmx = 0, tmy = 0;
+    addEventListener("pointermove", (e) => {
+      tmx = (e.clientX / innerWidth) * 2 - 1;
+      tmy = (e.clientY / innerHeight) * 2 - 1;
     }, { passive: true });
-    setInterval(() => { if (pending.size) checkReveals(); }, 500);
+
+    function updateParallax() {
+      const vh = innerHeight;
+      const amp = innerWidth < 760 ? 0.45 : 1;
+      for (const p of plxEls) {
+        const r = p.panel.getBoundingClientRect();
+        if (r.bottom < -80 || r.top > vh + 80) continue;
+        const prog = (r.top + r.height / 2 - vh / 2) / vh; // -1 … 1 through the panel
+        const y = prog * p.speed * 10 * amp;
+        const mxo = mx * p.mouse * 6 * amp;
+        const myo = my * p.mouse * 4 * amp;
+        p.el.style.transform = `translate3d(${mxo.toFixed(2)}px, ${(y + myo).toFixed(2)}px, 0)`;
+      }
+      for (const rb of ribbons) {
+        const r = rb.el.getBoundingClientRect();
+        if (r.bottom < -120 || r.top > vh + 120) continue;
+        rb.el.style.transform = `translate3d(${(scrollY * rb.drift).toFixed(1)}px, 0, 0)`;
+      }
+    }
+    // scroll drives updates directly (rAF alone starves in throttled/background
+    // tabs); the rAF loop adds pointer-drift easing between scrolls
+    addEventListener("scroll", () => { updateParallax(); checkReveals(); }, { passive: true });
+    function frame() {
+      mx += (tmx - mx) * 0.06;
+      my += (tmy - my) * 0.06;
+      updateParallax();
+      checkReveals();
+      requestAnimationFrame(frame);
+    }
+    if (!reducedMotion) { updateParallax(); requestAnimationFrame(frame); }
+
+    /* keep portrait vertically centered: translate is owned by the engine,
+       so recenter via top offset */
+    const pc = document.querySelector(".portrait-card");
+    if (pc) { pc.style.top = "50%"; pc.style.marginTop = `-${pc.offsetHeight / 2}px`; pc.style.transform = "none"; }
 
     /* ---------- the wall (big.dk-style) ---------- */
     const wall = document.getElementById("wall");
@@ -586,6 +837,24 @@
       }
     }
 
+    /* ---------- arc ribbons: sector × count chips from real data ---------- */
+    function buildRibbons() {
+      const bySector = new Map();
+      for (const p of projects) bySector.set(p.sector, (bySector.get(p.sector) || 0) + 1);
+      const chips = [...bySector.entries()].sort((a, b) => b[1] - a[1])
+        .map(([sector, n], i) => `<span class="chip${i % 2 ? " green" : ""}"><b>${n}×</b>&nbsp;${sector}</span>`);
+      const years = [...new Set(projects.map((p) => p.year))].sort();
+      const yearChips = years.map((y, i) => `<span class="chip${i % 2 ? "" : " green"}">’${String(y).slice(2)}</span>`);
+      const roles = [...new Set(projects.map((p) => p.role))]
+        .map((r, i) => `<span class="chip${i % 2 ? " green" : ""}">${r}</span>`);
+      const fill = (el, parts) => { el.innerHTML = parts.concat(parts).join(""); };
+      fill(document.getElementById("ribbon-a"), chips);
+      fill(document.getElementById("ribbon-b"), yearChips);
+      fill(document.getElementById("ribbon-c"), roles);
+      // center ribbons so drift plays out both ways
+      for (const rb of ribbons) rb.el.style.marginLeft = `-${rb.el.scrollWidth / 4}px`;
+    }
+
     fetch("/assets/projects.json")
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
@@ -595,6 +864,7 @@
         projects = data;
         renderFilters();
         render();
+        buildRibbons();
       })
       .catch((err) => {
         countNote.textContent = "unavailable";
