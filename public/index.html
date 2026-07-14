@@ -317,7 +317,9 @@
     @media (max-width: 760px) { .figures { grid-template-columns: 1fr; gap: 14px; } }
 
     /* ================= the wall ================= */
-    #work { background: var(--cream); position: relative; }
+    /* min-height so the sticky workbar can always dock at the viewport top,
+       even when a filter leaves only a few tiles */
+    #work { background: var(--cream); position: relative; min-height: 100svh; }
     .workbar {
       position: sticky; top: 0; z-index: 30;
       display: flex; align-items: center; justify-content: flex-end;
@@ -740,11 +742,19 @@
       const t = chapters[clamp(i, 0, chapters.length - 1)];
       const startY = scrollY;
       t.scrollIntoView({ behavior: "smooth", block: "start" });
+      // watchdog 1: renderer never ran the smooth animation at all
       setTimeout(() => {
         if (Math.abs(scrollY - startY) < 4 && Math.abs(t.offsetTop - startY) >= 4) {
           t.scrollIntoView({ behavior: "instant", block: "start" });
         }
       }, 260);
+      // watchdog 2: smooth scroll froze mid-flight (throttled tabs) — settle
+      // onto the target after the animation window has passed
+      setTimeout(() => {
+        if (Math.abs(t.offsetTop - scrollY) > 40) {
+          t.scrollIntoView({ behavior: "instant", block: "start" });
+        }
+      }, 900);
     }
     document.getElementById("up").addEventListener("click", () => go(currentChapter() - 1));
     document.getElementById("down").addEventListener("click", () => go(currentChapter() + 1));
@@ -812,6 +822,9 @@
           activeSector = sector;
           filters.querySelectorAll("button").forEach((c) => c.classList.toggle("active", c === b));
           render();
+          // dock the selector bar under the top of the viewport (it's sticky
+          // there) and show the filtered wall from its first row
+          go(chapters.length - 1);
         });
         filters.appendChild(b);
       }
