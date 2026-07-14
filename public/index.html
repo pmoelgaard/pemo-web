@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" class="snap">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Peter A. Moelgaard — Projects</title>
-  <meta name="description" content="Peter A. Moelgaard — technology executive and entrepreneur. A gallery of ventures, platforms, and products I have been involved with.">
+  <meta name="description" content="Peter A. Moelgaard — technology executive and entrepreneur. A scroll story through 28 years of ventures, platforms, and products.">
   <meta property="og:title" content="Peter A. Moelgaard — Projects">
-  <meta property="og:description" content="A gallery of ventures, platforms, and products I have been involved with.">
+  <meta property="og:description" content="A scroll story through 28 years of ventures, platforms, and products.">
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://www.pemo.me/">
   <meta property="og:image" content="https://www.pemo.me/assets/portrait.jpg">
@@ -37,23 +37,17 @@
     :root {
       --cream: #f6f1e4;
       --cream-soft: #faf7ee;
-      --navy: #1d3a58;          /* softened navy — ink & accents only */
+      --navy: #1d3a58;
       --navy-deep: #14304d;
-      --green: #2a6350;         /* softened dark green */
+      --green: #2a6350;
       --green-soft: #8fac9c;
       --gray: #4a4f57;
       --ink: #1d3a58;
       --muted: #8b8e94;
       --mono: "Space Mono", monospace;
-      --wash-navy: rgba(29, 58, 88, 0.06);
-      --wash-green: rgba(42, 99, 80, 0.07);
       --soft-shadow: 0 2px 6px rgba(29, 58, 88, 0.04), 0 24px 64px rgba(29, 58, 88, 0.09);
     }
     * { box-sizing: border-box; margin: 0; }
-    html { scroll-behavior: smooth; }
-    /* proximity, not mandatory: mandatory root snapping clamps/cancels
-       programmatic and assistive scrolling in several engines */
-    html.snap { scroll-snap-type: y proximity; }
     body {
       background: var(--cream);
       color: var(--gray);
@@ -92,18 +86,36 @@
     .rail button:hover { opacity: 1; transform: scale(1.1); }
     .rail svg { display: block; }
     .rail .menu-btn { margin-bottom: 10px; }
-    .snap-toggle {
-      position: fixed; bottom: 20px; left: 28px; z-index: 40;
-      font-family: var(--mono);
-      font-size: 0.66rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--navy);
-      opacity: 0.6;
-    }
-    .snap-toggle:hover { opacity: 1; }
 
-    /* ================= overlay menu (chapter index) ================= */
+    /* story progress spine */
+    .spine {
+      position: fixed; left: 28px; top: 50%; z-index: 40;
+      transform: translateY(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+    }
+    .spine .track {
+      width: 2px; height: 30vh;
+      background: rgba(29, 58, 88, 0.12);
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+    .spine .fill {
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 0%;
+      background: linear-gradient(var(--navy), var(--green));
+      border-radius: 2px;
+    }
+    .spine .pct {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      writing-mode: vertical-rl;
+    }
+    @media (max-width: 900px) { .spine { display: none; } }
+
+    /* ================= overlay menu ================= */
     .overlay {
       position: fixed; inset: 0; z-index: 50;
       background:
@@ -118,7 +130,7 @@
     .overlay a {
       display: flex; align-items: baseline; gap: 22px;
       font-weight: 200;
-      font-size: clamp(1.9rem, 5vw, 3.4rem);
+      font-size: clamp(1.7rem, 4.6vw, 3.2rem);
       letter-spacing: -0.01em;
       color: var(--cream);
       text-decoration: none;
@@ -138,63 +150,17 @@
       color: var(--cream);
     }
 
-    /* ================= chapters ================= */
-    .panel {
-      min-height: 100svh;
-      scroll-snap-align: start;
-      position: relative;
-      display: flex; flex-direction: column; justify-content: center;
+    /* ================= scroll-story scenes =================
+       Each .story is a tall scroll runway; its .pin stays fixed for the
+       whole runway while scroll progress scrubs the scene's beats. */
+    .story { position: relative; }
+    .story .pin {
+      position: sticky; top: 0;
+      height: 100svh;
       overflow: hidden;
+      display: flex; flex-direction: column; justify-content: center;
     }
-    .inner { width: min(1180px, 100%); margin: 0 auto; padding: 0 max(28px, 4vw); position: relative; z-index: 2; }
-
-    /* soft washes instead of dark fields */
-    .panel .wash {
-      position: absolute; inset: -20%;
-      pointer-events: none;
-      z-index: 0;
-    }
-    #intro .wash {
-      background:
-        radial-gradient(52% 44% at 78% 18%, var(--wash-navy), transparent 70%),
-        radial-gradient(46% 40% at 12% 78%, var(--wash-green), transparent 70%);
-    }
-    #numbers .wash {
-      background:
-        radial-gradient(50% 46% at 16% 22%, var(--wash-green), transparent 70%),
-        radial-gradient(44% 40% at 86% 74%, var(--wash-navy), transparent 70%);
-    }
-    #arc .wash {
-      background:
-        radial-gradient(56% 48% at 50% 10%, rgba(246, 241, 228, 0.9), transparent 75%),
-        radial-gradient(48% 44% at 82% 82%, var(--wash-green), transparent 70%),
-        radial-gradient(40% 40% at 10% 60%, var(--wash-navy), transparent 70%);
-    }
-
-    /* parallax decor: rings, dots, ghost type */
-    .decor { position: absolute; pointer-events: none; z-index: 1; }
-    .ring {
-      border: 1px solid rgba(29, 58, 88, 0.14);
-      border-radius: 50%;
-      aspect-ratio: 1;
-    }
-    .ring.green { border-color: rgba(42, 99, 80, 0.16); }
-    .dots {
-      background-image: radial-gradient(rgba(29, 58, 88, 0.13) 1.2px, transparent 1.2px);
-      background-size: 22px 22px;
-      -webkit-mask-image: radial-gradient(60% 60% at 50% 50%, black 30%, transparent 75%);
-      mask-image: radial-gradient(60% 60% at 50% 50%, black 30%, transparent 75%);
-    }
-    .ghost {
-      font-weight: 200;
-      font-size: clamp(7rem, 22vw, 19rem);
-      line-height: 1;
-      letter-spacing: -0.03em;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(29, 58, 88, 0.10);
-      white-space: nowrap;
-      user-select: none;
-    }
+    .inner { width: min(1120px, 100%); margin: 0 auto; padding: 0 max(28px, 5vw); position: relative; z-index: 2; }
 
     .micro {
       font-family: var(--mono);
@@ -203,133 +169,155 @@
       letter-spacing: 0.26em;
       text-transform: uppercase;
       color: var(--green);
-      margin-bottom: 30px;
+      margin-bottom: 28px;
     }
     .statement {
       font-weight: 200;
-      font-size: clamp(2.6rem, 7.2vw, 6.2rem);
+      font-size: clamp(2.4rem, 6.6vw, 5.6rem);
       line-height: 1.06;
       letter-spacing: -0.025em;
       color: var(--ink);
-      max-width: 16ch;
-      margin-bottom: 36px;
+      max-width: 18ch;
+      margin-bottom: 30px;
     }
     .statement strong { font-weight: 400; color: var(--green); }
-    .statement .w {
-      display: inline-block;
-      opacity: 0;
-      transform: translateY(0.55em) rotate(1.5deg);
-      transition: opacity 0.55s ease, transform 0.65s cubic-bezier(0.2, 0.75, 0.25, 1);
-      transition-delay: var(--wd, 0s);
-      will-change: transform;
-    }
-    .in .statement .w, .statement.in .w { opacity: 1; transform: none; }
-    /* .now = finalize instantly (first paint, or frozen timelines in throttled tabs) */
-    .statement.now .w { transition: none !important; }
-    .sub {
-      font-weight: 300;
-      font-size: 1.12rem;
-      color: var(--gray);
-      max-width: 52ch;
-    }
-    .sub a { color: var(--navy); text-decoration-color: var(--green-soft); text-underline-offset: 4px; }
+    .sub { font-weight: 300; font-size: 1.1rem; color: var(--gray); max-width: 50ch; }
 
-    /* portrait card in intro — soft, floating */
+    /* decor layers (scrubbed by scene progress) */
+    .decor { position: absolute; pointer-events: none; z-index: 0; will-change: transform; }
+    .ring { border: 1px solid rgba(29, 58, 88, 0.13); border-radius: 50%; aspect-ratio: 1; }
+    .ring.green { border-color: rgba(42, 99, 80, 0.15); }
+    .dots {
+      background-image: radial-gradient(rgba(29, 58, 88, 0.12) 1.2px, transparent 1.2px);
+      background-size: 22px 22px;
+      -webkit-mask-image: radial-gradient(60% 60% at 50% 50%, black 30%, transparent 75%);
+      mask-image: radial-gradient(60% 60% at 50% 50%, black 30%, transparent 75%);
+    }
+    .ghost {
+      font-weight: 200;
+      font-size: clamp(6rem, 20vw, 17rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(29, 58, 88, 0.10);
+      white-space: nowrap;
+      user-select: none;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* hero */
+    #hero .wash, .story .wash { position: absolute; inset: -20%; z-index: 0; pointer-events: none; }
+    #hero .wash {
+      background:
+        radial-gradient(52% 44% at 78% 18%, rgba(29, 58, 88, 0.06), transparent 70%),
+        radial-gradient(46% 40% at 12% 78%, rgba(42, 99, 80, 0.07), transparent 70%);
+    }
+    #origin .wash { background: radial-gradient(50% 46% at 80% 30%, rgba(42, 99, 80, 0.07), transparent 70%); }
+    #pattern .wash { background: radial-gradient(50% 46% at 18% 24%, rgba(29, 58, 88, 0.06), transparent 70%); }
+    #numbers .wash { background: radial-gradient(50% 46% at 82% 70%, rgba(42, 99, 80, 0.07), transparent 70%); }
+
     .portrait-card {
       position: absolute;
       right: max(28px, 6vw);
       top: 50%;
-      width: clamp(180px, 21vw, 300px);
+      width: clamp(170px, 20vw, 290px);
       z-index: 1;
       border-radius: 24px;
       overflow: hidden;
       box-shadow: var(--soft-shadow);
-      transform: translateY(-50%);
+      will-change: transform;
     }
     .portrait-card img { display: block; width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: 35% 18%; }
-    .portrait-card::after {
-      content: "";
-      position: absolute; inset: 0;
-      background: linear-gradient(200deg, rgba(246, 241, 228, 0.16), transparent 45%);
-    }
     @media (max-width: 1080px) { .portrait-card { display: none; } }
-
-    .facts {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-      margin-top: 56px;
-    }
-    .fact {
-      background: var(--cream-soft);
-      border: 1px solid rgba(29, 58, 88, 0.08);
-      border-radius: 20px;
-      padding: 26px 24px 22px;
-      box-shadow: var(--soft-shadow);
-    }
-    .fact h3 {
-      font-family: var(--mono);
-      font-size: 0.74rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 10px;
-    }
-    .fact p { font-weight: 300; font-size: 0.98rem; color: var(--gray); }
-    .fact .num {
-      display: block;
-      font-weight: 200;
-      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-      line-height: 1.1;
-      color: var(--navy);
-      margin-bottom: 6px;
-      font-variant-numeric: tabular-nums;
-    }
-    @media (max-width: 760px) { .facts { grid-template-columns: 1fr; gap: 16px; margin-top: 44px; } }
 
     .hint {
       position: absolute; bottom: 26px; left: 50%;
       transform: translateX(-50%);
       color: rgba(29, 58, 88, 0.45);
-      animation: bob 2.4s ease-in-out infinite;
       z-index: 2;
+      animation: bob 2.4s ease-in-out infinite;
     }
     @keyframes bob { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 8px); } }
 
-    /* ================= arc chapter (scroll-driven ribbons) ================= */
-    #arc { justify-content: center; }
-    #arc .inner { margin-bottom: 12px; }
-    .ribbons { position: relative; z-index: 2; display: grid; gap: 14px; padding: 26px 0 8px; }
-    .ribbon { display: flex; gap: 14px; width: max-content; will-change: transform; }
-    .chip {
+    /* beats: scroll-scrubbed list items (mythodical-style) */
+    .beats { display: grid; gap: 18px; max-width: 620px; }
+    .beat { will-change: opacity, transform; }
+    .beat h3 {
+      font-weight: 400;
+      font-size: clamp(1.15rem, 2.2vw, 1.6rem);
+      color: var(--ink);
+      display: flex; align-items: baseline; gap: 14px;
+    }
+    .beat h3 i {
+      font-family: var(--mono); font-style: normal; font-weight: 700;
+      font-size: 0.68rem; letter-spacing: 0.2em;
+      color: var(--green);
+    }
+    .beat p { font-weight: 300; font-size: 1rem; color: var(--gray); max-width: 52ch; margin-top: 4px; }
+
+    /* scrubbed year — the story clock */
+    .clock {
+      position: absolute;
+      right: -2vw; bottom: 6%;
+      z-index: 0;
+    }
+    #origin .statement, #origin .beats { position: relative; z-index: 2; }
+
+    /* pattern scene: sector constellation */
+    .constellation {
+      position: absolute; inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .sector-chip {
+      position: absolute;
       font-family: var(--mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.16em;
+      font-size: clamp(0.62rem, 1vw, 0.78rem);
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      white-space: nowrap;
       color: var(--navy);
       background: var(--cream-soft);
-      border: 1px solid rgba(29, 58, 88, 0.10);
+      border: 1px solid rgba(29, 58, 88, 0.12);
       border-radius: 999px;
-      padding: 10px 20px;
+      padding: 9px 18px;
       box-shadow: 0 1px 3px rgba(29, 58, 88, 0.05);
+      white-space: nowrap;
+      will-change: opacity, transform;
     }
-    .chip.green { color: var(--green); border-color: rgba(42, 99, 80, 0.14); }
-    .chip b { font-weight: 700; }
-    .arc-years {
-      display: flex; align-items: baseline; gap: 4vw;
+    .sector-chip.green { color: var(--green); border-color: rgba(42, 99, 80, 0.16); }
+    .sector-chip b { font-weight: 700; }
+    @media (max-width: 720px) { .constellation { display: none; } }
+
+    /* numbers scene: scroll-scrubbed counters */
+    .figures { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 40px; }
+    .figure {
+      background: var(--cream-soft);
+      border: 1px solid rgba(29, 58, 88, 0.08);
+      border-radius: 20px;
+      padding: 26px 24px 22px;
+      box-shadow: var(--soft-shadow);
+      will-change: opacity, transform;
+    }
+    .figure h3 {
+      font-family: var(--mono);
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+    .figure .num {
+      display: block;
       font-weight: 200;
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      line-height: 1.1;
       color: var(--navy);
-      font-size: clamp(3rem, 9vw, 7rem);
-      letter-spacing: -0.03em;
-      line-height: 1;
+      font-variant-numeric: tabular-nums;
     }
-    .arc-years .sep { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(42,99,80,0.5), rgba(29,58,88,0.25)); align-self: center; }
-    .arc-years em { font-style: normal; color: var(--green); }
+    .figure p { font-weight: 300; font-size: 0.95rem; color: var(--gray); margin-top: 6px; }
+    @media (max-width: 760px) { .figures { grid-template-columns: 1fr; gap: 14px; } }
 
     /* ================= the wall ================= */
-    #work { background: var(--cream); padding-bottom: 0; justify-content: flex-start; }
+    #work { background: var(--cream); position: relative; }
     .workbar {
       position: sticky; top: 0; z-index: 30;
       display: flex; align-items: center; justify-content: flex-end;
@@ -362,7 +350,6 @@
       color: var(--muted);
       white-space: nowrap;
     }
-
     .wall {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
@@ -383,7 +370,6 @@
     }
     .tile:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(29, 58, 88, 0.07), 0 18px 40px rgba(29, 58, 88, 0.10); }
     @keyframes tile-in { from { opacity: 0; transform: scale(0.97); } }
-    /* soft, light tile palettes — navy/green as ink, not field */
     .t0 { background: #e3e8ec; }
     .t1 {
       background: #dde6dd;
@@ -400,46 +386,29 @@
       background-size: 14px 14px;
     }
     .t5 { background: #d5e0d6; }
-    .tile .code {
-      font-weight: 300;
-      font-size: 1.5rem;
-      letter-spacing: 0.06em;
-      color: var(--navy);
-    }
+    .tile .code { font-weight: 300; font-size: 1.5rem; letter-spacing: 0.06em; color: var(--navy); }
     .t1 .code, .t5 .code { color: var(--green); }
     .t4 .code { color: var(--gray); }
     .tile .tyear {
       position: absolute; right: 11px; bottom: 8px;
-      font-family: var(--mono);
-      font-size: 0.6rem;
+      font-family: var(--mono); font-size: 0.6rem;
       color: rgba(29, 58, 88, 0.40);
     }
     .tile .veil {
       position: absolute; inset: 0;
       background: rgba(42, 99, 80, 0.94);
       display: flex; flex-direction: column; justify-content: flex-end;
-      gap: 3px;
-      padding: 12px;
-      text-align: left;
+      gap: 3px; padding: 12px; text-align: left;
       opacity: 0;
       transition: opacity 0.16s ease;
     }
     .tile:hover .veil, .tile:focus-visible .veil { opacity: 1; }
-    .veil strong {
-      font-weight: 500;
-      font-size: 0.88rem;
-      line-height: 1.25;
-      color: var(--cream);
-    }
+    .veil strong { font-weight: 500; font-size: 0.88rem; line-height: 1.25; color: var(--cream); }
     .veil em {
       font-family: var(--mono); font-style: normal;
-      font-size: 0.6rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
       color: rgba(246, 241, 228, 0.75);
     }
-
-    /* thin footer line at the end of the wall */
     .endbar {
       display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
       gap: 8px 28px;
@@ -453,27 +422,15 @@
     .endbar a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--green); padding-bottom: 1px; }
     .endbar a:hover { color: var(--green); }
 
-    /* section content entrance */
-    .reveal {
-      opacity: 0;
-      transform: translateY(26px);
-      transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.8, 0.3, 1);
-      transition-delay: var(--d, 0s);
-    }
-    .reveal.in { opacity: 1; transform: none; }
-    /* statements handle their own word-level animation */
-    .reveal.statement { opacity: 1; transform: none; }
-
     @media (max-width: 900px) {
       .workbar { padding: 46px 20px 12px; justify-content: flex-start; }
       .filters { justify-content: flex-start; }
       .rail .step { display: none; }
       .wordmark { font-size: 0.66rem; }
+      .clock { right: -6vw; }
     }
     @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; transition: none !important; }
-      .reveal, .statement .w { opacity: 1 !important; transform: none !important; }
     }
   </style>
 </head>
@@ -486,97 +443,132 @@
         <path d="M0 1h22M0 7h22M0 13h22"/>
       </svg>
     </button>
-    <button class="step" id="up" aria-label="Previous section">
+    <button class="step" id="up" aria-label="Previous chapter">
       <svg width="18" height="10" viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 9L9 1l8 8"/></svg>
     </button>
-    <button class="step" id="down" aria-label="Next section">
+    <button class="step" id="down" aria-label="Next chapter">
       <svg width="18" height="10" viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l8 8 8-8"/></svg>
     </button>
   </div>
 
-  <button class="snap-toggle" id="snap-toggle">Scroll snap — on</button>
+  <div class="spine" aria-hidden="true">
+    <div class="track"><div class="fill" id="spine-fill"></div></div>
+    <span class="pct" id="spine-pct">00%</span>
+  </div>
 
   <div class="overlay" id="overlay">
     <button class="close" id="menu-close" aria-label="Close menu">
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 2l16 16M18 2L2 18"/></svg>
     </button>
     <nav>
-      <a href="#intro" data-jump="intro"><i>01</i> Introduction</a>
-      <a href="#numbers" data-jump="numbers"><i>02</i> In numbers</a>
-      <a href="#arc" data-jump="arc"><i>03</i> The arc</a>
-      <a href="#work" data-jump="work"><i>04</i> Selected work</a>
-      <a href="/contact"><i>05</i> Contact</a>
+      <a href="#hero" data-jump="hero"><i>01</i> Introduction</a>
+      <a href="#origin" data-jump="origin"><i>02</i> Since 1998</a>
+      <a href="#pattern" data-jump="pattern"><i>03</i> The pattern</a>
+      <a href="#numbers" data-jump="numbers"><i>04</i> In numbers</a>
+      <a href="#work" data-jump="work"><i>05</i> Selected work</a>
+      <a href="/contact"><i>06</i> Contact</a>
     </nav>
   </div>
 
   <main>
-    <section class="panel" id="intro">
-      <div class="wash" data-plx="-6" aria-hidden="true"></div>
-      <div class="decor ghost" style="left:-2vw; top:6%;" data-plx="14" data-mouse="6" aria-hidden="true">BUILDER</div>
-      <div class="decor ring" style="width:44vmax; right:-16vmax; top:-14vmax;" data-plx="10" data-mouse="10" aria-hidden="true"></div>
-      <div class="decor ring green" style="width:20vmax; left:6vw; bottom:-6vmax;" data-plx="22" data-mouse="16" aria-hidden="true"></div>
-      <div class="decor dots" style="width:34vmax; height:30vmax; left:-8vmax; top:14%;" data-plx="18" data-mouse="12" aria-hidden="true"></div>
-      <div class="portrait-card" data-plx="-12" data-mouse="-8" aria-hidden="true">
-        <img src="/assets/portrait.jpg" alt="">
-      </div>
-      <div class="inner">
-        <p class="micro reveal">Peter A. Moelgaard — Technology executive &amp; entrepreneur</p>
-        <h1 class="statement reveal" data-words style="--d:.08s">I build companies, platforms &amp; products<strong>.</strong></h1>
-        <p class="sub reveal" style="--d:.16s" data-plx="-4">From fintech rails to edge infrastructure — as founder, CTO, and board member. Based between Bangkok and Copenhagen.</p>
-      </div>
-      <div class="hint" aria-hidden="true">
-        <svg width="18" height="10" viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l8 8 8-8"/></svg>
+    <!-- 01 · hero: statement hands off to the story as you scroll -->
+    <section class="story" id="hero" style="height: 220svh;">
+      <div class="pin">
+        <div class="wash"></div>
+        <div class="decor ghost" style="left:-2vw; top:6%;" data-scrub="y:0,-160">BUILDER</div>
+        <div class="decor ring" style="width:42vmax; right:-16vmax; top:-14vmax;" data-scrub="y:0,-90"></div>
+        <div class="decor dots" style="width:32vmax; height:28vmax; left:-8vmax; bottom:6%;" data-scrub="y:0,-120"></div>
+        <div class="portrait-card" data-scrub="y:40,-120; r:0,-3">
+          <img src="/assets/portrait.jpg" alt="Peter A. Moelgaard">
+        </div>
+        <div class="inner" data-scrub="y:0,-60; o:1,1,0.0">
+          <p class="micro">Peter A. Moelgaard — Technology executive &amp; entrepreneur</p>
+          <h1 class="statement">I build companies, platforms &amp; products<strong>.</strong></h1>
+          <p class="sub">Twenty-eight years of it — as founder, CTO, and board member, between Bangkok and Copenhagen. <strong style="color:var(--ink); font-weight:500;">Scroll</strong> — the story runs on your thumb.</p>
+        </div>
+        <div class="hint">
+          <svg width="18" height="10" viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l8 8 8-8"/></svg>
+        </div>
       </div>
     </section>
 
-    <section class="panel" id="numbers">
-      <div class="wash" data-plx="-6" aria-hidden="true"></div>
-      <div class="decor ghost" style="right:-4vw; top:2%;" data-plx="16" aria-hidden="true">1998</div>
-      <div class="decor ring" style="width:30vmax; left:-12vmax; bottom:-12vmax;" data-plx="12" aria-hidden="true"></div>
-      <div class="decor dots" style="width:30vmax; height:26vmax; right:-6vmax; bottom:4%;" data-plx="20" aria-hidden="true"></div>
-      <div class="inner">
-        <p class="micro reveal">02 — In numbers</p>
-        <h2 class="statement reveal" data-words style="--d:.08s">Twenty-eight years of shipping<strong>.</strong></h2>
-        <div class="facts">
-          <div class="fact reveal" style="--d:.14s" data-plx="-8">
-            <h3>Projects</h3>
-            <span class="num" data-count="100">0</span>
-            <p>Ventures, platforms, and products — founded, built, or steered to scale.</p>
-          </div>
-          <div class="fact reveal" style="--d:.2s" data-plx="-14">
-            <h3>Sectors</h3>
-            <span class="num" data-count="12">0</span>
-            <p>Fintech to govtech, healthtech to logistics — the pattern travels.</p>
-          </div>
-          <div class="fact reveal" style="--d:.26s" data-plx="-20">
-            <h3>Since</h3>
-            <span class="num" data-count="1998" data-count-from="1970">1970</span>
-            <p>Two cities, one habit: staying closest to the architecture.</p>
+    <!-- 02 · origin: the clock scrubs 1998 → 2026 while beats light up -->
+    <section class="story" id="origin" style="height: 500svh;">
+      <div class="pin">
+        <div class="wash"></div>
+        <div class="decor ring green" style="width:34vmax; left:-14vmax; top:-10vmax;" data-scrub="y:60,-60"></div>
+        <div class="decor clock ghost" id="clock" data-scrub="y:40,-40">1998</div>
+        <div class="inner">
+          <p class="micro">02 — Since 1998</p>
+          <h2 class="statement">The clock is your scrollbar<strong>.</strong></h2>
+          <div class="beats" id="origin-beats">
+            <div class="beat" data-beat>
+              <h3><i>’98</i> First lines shipped</h3>
+              <p>Started building for the web when the web was young — and never handed the architecture to someone else.</p>
+            </div>
+            <div class="beat" data-beat>
+              <h3><i>ROLES</i> Founder → CTO → Board</h3>
+              <p>Every seat at the table, usually the one closest to the whiteboard.</p>
+            </div>
+            <div class="beat" data-beat>
+              <h3><i>CITIES</i> Bangkok · Copenhagen</h3>
+              <p>Two time zones, one continuous shipping cadence.</p>
+            </div>
+            <div class="beat" data-beat>
+              <h3><i>NOW</i> Still closest to the architecture</h3>
+              <p>The habit never changed — only the scale did.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="panel" id="arc">
-      <div class="wash" data-plx="-5" aria-hidden="true"></div>
-      <div class="decor ring green" style="width:36vmax; right:-14vmax; top:-10vmax;" data-plx="10" aria-hidden="true"></div>
-      <div class="inner">
-        <p class="micro reveal">03 — The arc</p>
-        <div class="arc-years reveal" style="--d:.08s" aria-label="From 1998 to today">
-          <span data-plx="6">1998</span>
-          <span class="sep" aria-hidden="true"></span>
-          <em data-plx="-6">today</em>
+    <!-- 03 · pattern: sectors place themselves as you scroll -->
+    <section class="story" id="pattern" style="height: 520svh;">
+      <div class="pin">
+        <div class="wash"></div>
+        <div class="decor dots" style="width:30vmax; height:26vmax; right:-6vmax; top:8%;" data-scrub="y:40,-40"></div>
+        <div class="constellation" id="constellation"></div>
+        <div class="inner">
+          <p class="micro">03 — The pattern</p>
+          <h2 class="statement">Twelve sectors, one pattern<strong>.</strong></h2>
+          <p class="sub">Each turn of the wheel drops another sector into orbit — fintech to govtech, healthtech to logistics. The pattern travels; keep scrolling and watch it spread.</p>
         </div>
-        <p class="sub reveal" style="--d:.16s; margin-top:26px;" data-plx="-4">Every sector teaches the next one. The ribbons below drift through the territory covered so far — slide any of it under the cursor in <a href="#work">the wall</a>.</p>
-      </div>
-      <div class="ribbons" aria-hidden="true">
-        <div class="ribbon" id="ribbon-a" data-drift="-0.10"></div>
-        <div class="ribbon" id="ribbon-b" data-drift="0.07"></div>
-        <div class="ribbon" id="ribbon-c" data-drift="-0.05"></div>
       </div>
     </section>
 
-    <section class="panel" id="work">
+    <!-- 04 · numbers: counters ride the scroll, not a timer -->
+    <section class="story" id="numbers" style="height: 400svh;">
+      <div class="pin">
+        <div class="wash"></div>
+        <div class="decor ghost" style="right:-4vw; top:4%;" data-scrub="y:30,-80">100</div>
+        <div class="decor ring" style="width:28vmax; left:-10vmax; bottom:-10vmax;" data-scrub="y:30,-50"></div>
+        <div class="inner">
+          <p class="micro">04 — In numbers</p>
+          <h2 class="statement">Scrub the numbers yourself<strong>.</strong></h2>
+          <div class="figures">
+            <div class="figure" data-beat>
+              <h3>Projects</h3>
+              <span class="num" data-dial="100" data-dial-pad="3">000</span>
+              <p>Ventures, platforms, and products — founded, built, or steered to scale.</p>
+            </div>
+            <div class="figure" data-beat>
+              <h3>Sectors</h3>
+              <span class="num" data-dial="12" data-dial-pad="2">00</span>
+              <p>The pattern travels across industries.</p>
+            </div>
+            <div class="figure" data-beat>
+              <h3>Years</h3>
+              <span class="num" data-dial="28" data-dial-pad="2">00</span>
+              <p>Since 1998 — and the clock is still running.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 · the wall -->
+    <section id="work">
       <div class="workbar">
         <div class="filters" id="filters" role="group" aria-label="Filter projects by sector"></div>
         <span class="count" id="count-note"></span>
@@ -592,44 +584,170 @@
 
   <script>
     const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+    const ease = (t) => 1 - Math.pow(1 - t, 3);
 
-    /* ---------- chapter navigation (mythodical-style) ---------- */
-    const sections = [...document.querySelectorAll(".panel")];
-    function currentSection() {
+    /* ================= scroll-story engine =================
+       Scroll position IS the timeline: every visual below is a pure
+       function of each scene's progress, so the story scrubs forward
+       and backward with the user's thumb — nothing runs on a timer. */
+
+    const scenes = [...document.querySelectorAll(".story")].map((el) => {
+      const beats = [...el.querySelectorAll("[data-beat]")];
+      const scrubs = [...el.querySelectorAll("[data-scrub]")].map((s) => {
+        const spec = {};
+        for (const part of s.dataset.scrub.split(";")) {
+          const [k, vals] = part.trim().split(":");
+          spec[k] = vals.split(",").map(parseFloat);
+        }
+        return { el: s, spec };
+      });
+      return { el, pin: el.querySelector(".pin"), beats, scrubs };
+    });
+
+    function sceneProgress(scene) {
+      const r = scene.el.getBoundingClientRect();
+      const runway = r.height - innerHeight;
+      return runway > 0 ? clamp(-r.top / runway, 0, 1) : 0;
+    }
+
+    /* beats: mythodical-style sequential highlight — future beats wait
+       dim and low, the active beat brightens to full, passed beats
+       settle to a readable half-light */
+    function styleBeat(el, p) {
+      if (p <= 0) { el.style.opacity = 0.14; el.style.transform = "translate3d(0,26px,0)"; return; }
+      if (p < 1) {
+        const t = ease(p);
+        el.style.opacity = (0.14 + 0.86 * t).toFixed(3);
+        el.style.transform = `translate3d(0,${(26 * (1 - t)).toFixed(1)}px,0)`;
+      } else {
+        const t = ease(clamp(p - 1, 0, 1));
+        el.style.opacity = (1 - 0.45 * t).toFixed(3);
+        el.style.transform = "translate3d(0,0,0)";
+      }
+    }
+
+    /* data-scrub="y:0,-120; o:1,0; r:0,-3; x:0,40" — linear keyframes over
+       scene progress (2 values = start,end; 3 values = start,mid,end) */
+    function applyScrub(item, prog) {
+      const kf = (vals) => {
+        if (vals.length === 2) return vals[0] + (vals[1] - vals[0]) * prog;
+        const seg = prog < 0.5 ? [vals[0], vals[1], prog * 2] : [vals[1], vals[2], (prog - 0.5) * 2];
+        return seg[0] + (seg[1] - seg[0]) * seg[2];
+      };
+      const y = item.spec.y ? kf(item.spec.y) : 0;
+      const x = item.spec.x ? kf(item.spec.x) : 0;
+      const r = item.spec.r ? kf(item.spec.r) : 0;
+      item.el.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0)${r ? ` rotate(${r.toFixed(2)}deg)` : ""}`;
+      if (item.spec.o) item.el.style.opacity = clamp(kf(item.spec.o), 0, 1).toFixed(3);
+    }
+
+    /* the origin clock: scroll scrubs the year 1998 → 2026 */
+    const clockEl = document.getElementById("clock");
+
+    /* the constellation: sectors drop into orbit one per beat of scroll */
+    const constellation = document.getElementById("constellation");
+    let chips = [];
+    function buildConstellation(projects) {
+      const bySector = new Map();
+      for (const p of projects) bySector.set(p.sector, (bySector.get(p.sector) || 0) + 1);
+      const sectors = [...bySector.entries()].sort((a, b) => b[1] - a[1]);
+      const n = sectors.length;
+      chips = sectors.map(([sector, count], i) => {
+        const chip = document.createElement("span");
+        chip.className = `sector-chip${i % 2 ? " green" : ""}`;
+        chip.innerHTML = `<b>${count}×</b>&nbsp;${sector}`;
+        // two weaving columns on the right half — clear of the copy
+        const outer = i % 2;
+        const jitter = i % 4 < 2 ? 0 : 4;
+        const cx = (outer ? 87 - jitter : 71 + jitter);        // percent
+        const cy = 10 + (i / n) * 76;                          // percent
+        chip.style.left = cx + "%";
+        chip.style.top = cy + "%";
+        chip.dataset.i = i;
+        constellation.appendChild(chip);
+        return chip;
+      });
+    }
+
+    /* scroll-scrubbed dials in the numbers scene */
+    const dials = [...document.querySelectorAll("[data-dial]")];
+
+    function updateStory() {
+      for (const scene of scenes) {
+        const r = scene.el.getBoundingClientRect();
+        if (r.bottom < -50 || r.top > innerHeight + 50) continue;
+        const prog = sceneProgress(scene);
+
+        for (const item of scene.scrubs) applyScrub(item, prog);
+
+        if (scene.beats.length) {
+          // reserve the first 18% for the headline, then beats share the runway
+          const band = clamp((prog - 0.18) / 0.74, 0, 1) * scene.beats.length;
+          scene.beats.forEach((b, i) => styleBeat(b, band - i));
+        }
+
+        if (scene.el.id === "origin" && clockEl) {
+          // linear on purpose: the year tracks the thumb 1:1
+          clockEl.textContent = String(Math.round(1998 + (2026 - 1998) * prog));
+        }
+        if (scene.el.id === "pattern" && chips.length) {
+          const band = clamp((prog - 0.14) / 0.78, 0, 1) * chips.length;
+          chips.forEach((chip, i) => {
+            const p = clamp(band - i, 0, 1);
+            const t = ease(p);
+            chip.style.opacity = t.toFixed(3);
+            chip.style.transform = `translate3d(-50%, ${(40 * (1 - t)).toFixed(1)}px, 0) scale(${(0.85 + 0.15 * t).toFixed(3)})`;
+          });
+        }
+        if (scene.el.id === "numbers") {
+          const t = clamp((prog - 0.2) / 0.6, 0, 1);
+          for (const d of dials) {
+            const v = Math.round(parseFloat(d.dataset.dial) * ease(t));
+            d.textContent = String(v).padStart(parseInt(d.dataset.dialPad || "1", 10), "0");
+          }
+        }
+      }
+
+      // progress spine
+      const total = document.body.scrollHeight - innerHeight;
+      const p = total > 0 ? clamp(scrollY / total, 0, 1) : 0;
+      document.getElementById("spine-fill").style.height = (p * 100).toFixed(1) + "%";
+      document.getElementById("spine-pct").textContent = String(Math.round(p * 100)).padStart(2, "0") + "%";
+    }
+
+    if (reducedMotion) {
+      // story stands still: everything readable, nothing scrubbed
+      document.querySelectorAll("[data-beat]").forEach((b) => { b.style.opacity = 1; });
+      chips = [];
+      dials.forEach((d) => { d.textContent = d.dataset.dial; });
+    } else {
+      addEventListener("scroll", updateStory, { passive: true });
+      addEventListener("resize", updateStory, { passive: true });
+      setInterval(updateStory, 400); // fallback for throttled/background tabs
+      (function raf() { updateStory(); requestAnimationFrame(raf); })();
+    }
+
+    /* ---------- chapter navigation ---------- */
+    const chapters = [...document.querySelectorAll(".story"), document.getElementById("work")];
+    function currentChapter() {
       const y = scrollY + innerHeight / 3;
       let idx = 0;
-      sections.forEach((s, i) => { if (s.offsetTop <= y) idx = i; });
+      chapters.forEach((s, i) => { if (s.offsetTop <= y) idx = i; });
       return idx;
     }
-    // mandatory snap cancels smooth programmatic scrolling — suspend it for
-    // the transition and restore once the scroll settles
-    let resumeTimer = 0;
     function go(i) {
-      const t = sections[Math.max(0, Math.min(sections.length - 1, i))];
-      const html = document.documentElement;
-      const hadSnap = html.classList.contains("snap");
-      html.classList.remove("snap");
+      const t = chapters[clamp(i, 0, chapters.length - 1)];
       const startY = scrollY;
       t.scrollIntoView({ behavior: "smooth", block: "start" });
-      // watchdog: some embedded renderers never run smooth scroll animations
       setTimeout(() => {
         if (Math.abs(scrollY - startY) < 4 && Math.abs(t.offsetTop - startY) >= 4) {
           t.scrollIntoView({ behavior: "instant", block: "start" });
         }
       }, 260);
-      if (hadSnap) {
-        clearTimeout(resumeTimer);
-        const resume = () => {
-          clearTimeout(resumeTimer);
-          html.classList.add("snap");
-          removeEventListener("scrollend", resume);
-        };
-        addEventListener("scrollend", resume, { once: true });
-        resumeTimer = setTimeout(resume, 1100);
-      }
     }
-    document.getElementById("up").addEventListener("click", () => go(currentSection() - 1));
-    document.getElementById("down").addEventListener("click", () => go(currentSection() + 1));
+    document.getElementById("up").addEventListener("click", () => go(currentChapter() - 1));
+    document.getElementById("down").addEventListener("click", () => go(currentChapter() + 1));
 
     const overlay = document.getElementById("overlay");
     const menuBtn = document.getElementById("menu-btn");
@@ -644,148 +762,10 @@
       a.addEventListener("click", (e) => {
         e.preventDefault();
         setMenu(false);
-        go(sections.indexOf(document.getElementById(a.dataset.jump)));
+        const t = document.getElementById(a.dataset.jump);
+        go(chapters.indexOf(t));
       });
     });
-
-    const snapBtn = document.getElementById("snap-toggle");
-    snapBtn.addEventListener("click", () => {
-      const on = document.documentElement.classList.toggle("snap");
-      snapBtn.textContent = `Scroll snap — ${on ? "on" : "off"}`;
-    });
-
-    /* ---------- word-split statements: each word rises on reveal ---------- */
-    document.querySelectorAll("[data-words]").forEach((el) => {
-      const split = (node) => {
-        [...node.childNodes].forEach((child) => {
-          if (child.nodeType === Node.TEXT_NODE) {
-            const frag = document.createDocumentFragment();
-            child.textContent.split(/(\s+)/).forEach((part) => {
-              if (!part) return;
-              if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
-              const w = document.createElement("span");
-              w.className = "w";
-              w.textContent = part;
-              frag.appendChild(w);
-            });
-            node.replaceChild(frag, child);
-          } else if (child.nodeType === Node.ELEMENT_NODE) {
-            split(child);
-          }
-        });
-      };
-      split(el);
-      el.querySelectorAll(".w").forEach((w, i) => w.style.setProperty("--wd", `${0.06 + i * 0.055}s`));
-    });
-
-    /* ---------- statement reveal (no IntersectionObserver: unreliable
-       update delivery in some embedded webviews) ---------- */
-    const pending = new Set();
-    // finalize: snap an element to its revealed state. Used for content already
-    // in view at first paint, and as a watchdog for throttled/background tabs
-    // where the animation timeline freezes mid-transition.
-    function finalize(el) {
-      el.style.transition = "none";
-      el.classList.add("in", "now");
-    }
-    document.querySelectorAll(".reveal").forEach((el) => {
-      if (el.getBoundingClientRect().top < innerHeight) {
-        finalize(el);
-        el.hasAttribute("data-count") && startCount(el);
-        el.querySelectorAll("[data-count]").forEach(startCount);
-      } else {
-        pending.add(el);
-      }
-    });
-    function checkReveals() {
-      for (const el of pending) {
-        if (el.getBoundingClientRect().top < innerHeight - 20) {
-          el.classList.add("in");
-          el.querySelectorAll("[data-count]").forEach(startCount);
-          el.hasAttribute("data-count") && startCount(el);
-          pending.delete(el);
-          setTimeout(() => finalize(el), 1600);
-        }
-      }
-    }
-    // fallback tick for throttled/background tabs where rAF and scroll
-    // events starve: keep reveals and parallax current
-    setInterval(() => {
-      if (pending.size) checkReveals();
-      if (typeof updateParallax === "function" && !reducedMotion) updateParallax();
-    }, 400);
-
-    /* ---------- animated counters ---------- */
-    const counted = new WeakSet();
-    function startCount(el) {
-      if (reducedMotion || counted.has(el)) { el.textContent = el.dataset.count; return; }
-      counted.add(el);
-      const to = parseInt(el.dataset.count, 10);
-      const from = parseInt(el.dataset.countFrom || "0", 10);
-      const t0 = performance.now();
-      const dur = 1400;
-      (function step(t) {
-        const p = Math.min(1, (t - t0) / dur);
-        const e = 1 - Math.pow(1 - p, 3);
-        el.textContent = String(Math.round(from + (to - from) * e));
-        if (p < 1) requestAnimationFrame(step);
-      })(t0);
-    }
-
-    /* ---------- parallax engine: scroll depth + pointer drift ----------
-       Every [data-plx] translates against its panel's scroll progress;
-       [data-mouse] layers also ease toward the pointer. One rAF loop,
-       transform-only, disabled under prefers-reduced-motion. */
-    const plxEls = [...document.querySelectorAll("[data-plx]")].map((el) => ({
-      el,
-      speed: parseFloat(el.dataset.plx),
-      mouse: parseFloat(el.dataset.mouse || "0"),
-      panel: el.closest(".panel"),
-    }));
-    const ribbons = [...document.querySelectorAll(".ribbon")].map((el) => ({
-      el,
-      drift: parseFloat(el.dataset.drift),
-    }));
-    let mx = 0, my = 0, tmx = 0, tmy = 0;
-    addEventListener("pointermove", (e) => {
-      tmx = (e.clientX / innerWidth) * 2 - 1;
-      tmy = (e.clientY / innerHeight) * 2 - 1;
-    }, { passive: true });
-
-    function updateParallax() {
-      const vh = innerHeight;
-      const amp = innerWidth < 760 ? 0.45 : 1;
-      for (const p of plxEls) {
-        const r = p.panel.getBoundingClientRect();
-        if (r.bottom < -80 || r.top > vh + 80) continue;
-        const prog = (r.top + r.height / 2 - vh / 2) / vh; // -1 … 1 through the panel
-        const y = prog * p.speed * 10 * amp;
-        const mxo = mx * p.mouse * 6 * amp;
-        const myo = my * p.mouse * 4 * amp;
-        p.el.style.transform = `translate3d(${mxo.toFixed(2)}px, ${(y + myo).toFixed(2)}px, 0)`;
-      }
-      for (const rb of ribbons) {
-        const r = rb.el.getBoundingClientRect();
-        if (r.bottom < -120 || r.top > vh + 120) continue;
-        rb.el.style.transform = `translate3d(${(scrollY * rb.drift).toFixed(1)}px, 0, 0)`;
-      }
-    }
-    // scroll drives updates directly (rAF alone starves in throttled/background
-    // tabs); the rAF loop adds pointer-drift easing between scrolls
-    addEventListener("scroll", () => { updateParallax(); checkReveals(); }, { passive: true });
-    function frame() {
-      mx += (tmx - mx) * 0.06;
-      my += (tmy - my) * 0.06;
-      updateParallax();
-      checkReveals();
-      requestAnimationFrame(frame);
-    }
-    if (!reducedMotion) { updateParallax(); requestAnimationFrame(frame); }
-
-    /* keep portrait vertically centered: translate is owned by the engine,
-       so recenter via top offset */
-    const pc = document.querySelector(".portrait-card");
-    if (pc) { pc.style.top = "50%"; pc.style.marginTop = `-${pc.offsetHeight / 2}px`; pc.style.transform = "none"; }
 
     /* ---------- the wall (big.dk-style) ---------- */
     const wall = document.getElementById("wall");
@@ -837,24 +817,6 @@
       }
     }
 
-    /* ---------- arc ribbons: sector × count chips from real data ---------- */
-    function buildRibbons() {
-      const bySector = new Map();
-      for (const p of projects) bySector.set(p.sector, (bySector.get(p.sector) || 0) + 1);
-      const chips = [...bySector.entries()].sort((a, b) => b[1] - a[1])
-        .map(([sector, n], i) => `<span class="chip${i % 2 ? " green" : ""}"><b>${n}×</b>&nbsp;${sector}</span>`);
-      const years = [...new Set(projects.map((p) => p.year))].sort();
-      const yearChips = years.map((y, i) => `<span class="chip${i % 2 ? "" : " green"}">’${String(y).slice(2)}</span>`);
-      const roles = [...new Set(projects.map((p) => p.role))]
-        .map((r, i) => `<span class="chip${i % 2 ? " green" : ""}">${r}</span>`);
-      const fill = (el, parts) => { el.innerHTML = parts.concat(parts).join(""); };
-      fill(document.getElementById("ribbon-a"), chips);
-      fill(document.getElementById("ribbon-b"), yearChips);
-      fill(document.getElementById("ribbon-c"), roles);
-      // center ribbons so drift plays out both ways
-      for (const rb of ribbons) rb.el.style.marginLeft = `-${rb.el.scrollWidth / 4}px`;
-    }
-
     fetch("/assets/projects.json")
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
@@ -864,12 +826,16 @@
         projects = data;
         renderFilters();
         render();
-        buildRibbons();
+        if (!reducedMotion) buildConstellation(projects);
+        updateStoryOnce();
       })
       .catch((err) => {
         countNote.textContent = "unavailable";
         console.error("Failed to load projects.json", err);
       });
+
+    function updateStoryOnce() { if (!reducedMotion) updateStory(); }
+    updateStoryOnce();
   </script>
 </body>
 </html>
