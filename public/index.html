@@ -738,8 +738,9 @@
       chapters.forEach((s, i) => { if (s.offsetTop <= y) idx = i; });
       return idx;
     }
-    function go(i) {
+    function go(i, push = false) {
       const t = chapters[clamp(i, 0, chapters.length - 1)];
+      if (push) pushUrlFor(t);
       const startY = scrollY;
       t.scrollIntoView({ behavior: "smooth", block: "start" });
       // watchdog 1: renderer never ran the smooth animation at all
@@ -756,8 +757,8 @@
         }
       }, 900);
     }
-    document.getElementById("up").addEventListener("click", () => go(currentChapter() - 1));
-    document.getElementById("down").addEventListener("click", () => go(currentChapter() + 1));
+    document.getElementById("up").addEventListener("click", () => go(currentChapter() - 1, true));
+    document.getElementById("down").addEventListener("click", () => go(currentChapter() + 1, true));
 
     const overlay = document.getElementById("overlay");
     const menuBtn = document.getElementById("menu-btn");
@@ -773,7 +774,7 @@
         e.preventDefault();
         setMenu(false);
         const t = document.getElementById(a.dataset.jump);
-        go(chapters.indexOf(t));
+        go(chapters.indexOf(t), true);
       });
     });
 
@@ -824,7 +825,7 @@
           render();
           // dock the selector bar under the top of the viewport (it's sticky
           // there) and show the filtered wall from its first row
-          go(chapters.length - 1);
+          go(chapters.length - 1, true);
         });
         filters.appendChild(b);
       }
@@ -840,6 +841,7 @@
         renderFilters();
         render();
         if (!reducedMotion) buildConstellation(projects);
+        applySectorFromUrl();
         updateStoryOnce();
       })
       .catch((err) => {
@@ -849,6 +851,85 @@
 
     function updateStoryOnce() { if (!reducedMotion) updateStory(); }
     updateStoryOnce();
+
+    /* ================= URL state =================
+       Every interaction lands in the URL, deep-linkable and reload-safe:
+         #origin@42        scene `origin`, 42% through its runway
+         #work/education   the wall, filtered to Education
+       Scrolling replaces the current entry (no history spam); discrete
+       clicks (menu, rail, filters) push entries so back/forward works. */
+    const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+    let lastUrl = location.hash || location.pathname;
+    let restoring = false;
+    let urlTimer = 0;
+
+    function urlFromState() {
+      if (scrollY < 40) return location.pathname; // top of page: clean URL
+      const el = chapters[currentChapter()];
+      if (el.id === "work") {
+        return "#work" + (activeSector !== "All" ? "/" + slug(activeSector) : "");
+      }
+      const scene = scenes.find((s) => s.el === el);
+      const prog = scene ? Math.round(sceneProgress(scene) * 100) : 0;
+      return "#" + el.id + (prog > 0 && prog < 100 ? "@" + prog : "");
+    }
+
+    function writeUrl(u, push) {
+      if (u === lastUrl) return;
+      lastUrl = u;
+      try { history[push ? "pushState" : "replaceState"](null, "", u); } catch (e) {}
+    }
+
+    function pushUrlFor(el) {
+      writeUrl(el.id === "work"
+        ? "#work" + (activeSector !== "All" ? "/" + slug(activeSector) : "")
+        : "#" + el.id, true);
+    }
+
+    addEventListener("scroll", () => {
+      if (restoring) return;
+      clearTimeout(urlTimer);
+      urlTimer = setTimeout(() => { if (!restoring) writeUrl(urlFromState(), false); }, 180);
+    }, { passive: true });
+
+    let pendingSectorSlug = null;
+    function applySectorFromUrl() {
+      if (!pendingSectorSlug) return;
+      const btns = [...filters.querySelectorAll("button")];
+      if (!btns.length) return; // filters not rendered yet — stay pending
+      const btn = btns.find((b) => slug(b.textContent) === pendingSectorSlug);
+      pendingSectorSlug = null;
+      if (btn) {
+        activeSector = btn.textContent;
+        filters.querySelectorAll("button").forEach((c) => c.classList.toggle("active", c === btn));
+        render();
+      }
+    }
+
+    function applyUrl() {
+      const m = /^#([a-z]+)(?:@(\d{1,3}))?(?:\/([a-z0-9-]+))?$/i.exec(location.hash);
+      if (!m) return;
+      const el = document.getElementById(m[1].toLowerCase());
+      if (!el) return;
+      restoring = true;
+      lastUrl = location.hash;
+      if (el.id === "work") {
+        if (m[3]) { pendingSectorSlug = m[3]; applySectorFromUrl(); }
+        scrollTo({ top: el.offsetTop, behavior: "instant" });
+      } else {
+        const prog = clamp(parseInt(m[2] || "0", 10) / 100, 0, 1);
+        const runway = Math.max(0, el.offsetHeight - innerHeight);
+        scrollTo({ top: el.offsetTop + runway * prog, behavior: "instant" });
+      }
+      updateStoryOnce();
+      setTimeout(() => { restoring = false; }, 350);
+    }
+
+    addEventListener("popstate", applyUrl);
+    if (location.hash) {
+      try { history.scrollRestoration = "manual"; } catch (e) {}
+      applyUrl();
+    }
   </script>
 </body>
 </html>
